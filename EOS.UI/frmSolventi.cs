@@ -892,6 +892,8 @@ namespace EOS.UI
                 ControlSolventiDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Solventi_Details ModelSolventiDetail = new EOS.Core.Model.Model_Solventi_Details();
 
+                ControlSolventiDetail.IDUtente = IDUtente;
+
                 //for (int i = 0; i < gridView.SelectedRowsCount; i++)
                 //{
                 //    int rowHandle = gridView.GetSelectedRows()[i];

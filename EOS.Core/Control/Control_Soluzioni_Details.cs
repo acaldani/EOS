@@ -102,7 +102,7 @@ namespace EOS.Core.Control
                 cmd = null;
                 cnn = null;
 
-                AddLogSoluzioneDettaglio("Inserimento", SoluzioneDetail, DataScadenza, newid);
+                AddLogSoluzioneDettaglio("Cancellazione", SoluzioneDetail, DataScadenza, newid);
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
@@ -213,90 +213,99 @@ namespace EOS.Core.Control
 
                 string SQLStringLog = "";
 
-                if (TipoOperazione == "Inserimento")
+                if (TipoOperazione == "Cancellazione")
                 {
                     SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
                     SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
                     SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "CAS = " + SoluzioneDetail.CAS + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "Concentrazione = " + SoluzioneDetail.Concentrazione + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "DataScadenza = " + DataScadenza + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "UMPrelievo = " + SoluzioneDetail.UM_Prelievo + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "QuantitaPrelievo = " + SoluzioneDetail.Quantita_Prelievo + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "NumeroApparecchio = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "NomeUtensile = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "NumeroApparecchio2 = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio2) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "NomeUtensile2 = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile2) + System.Environment.NewLine;
-                    SQLStringLog = SQLStringLog + "Note = " + SoluzioneDetail.Note;
                 }
-                else
+                else 
                 {
-                    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
-
-                    if (SoluzioneDetail.Tipologia_MR != SoluzioneDetailOriginale.Tipologia_MR)
+                    if (TipoOperazione == "Inserimento")
                     {
-                        SQLStringLog = SQLStringLog + "TipologiaMR Precedente = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetailOriginale.Tipologia_MR) + " - Attuale = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "CAS = " + SoluzioneDetail.CAS + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "Concentrazione = " + SoluzioneDetail.Concentrazione + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "DataScadenza = " + DataScadenza + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "UMPrelievo = " + SoluzioneDetail.UM_Prelievo + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "QuantitaPrelievo = " + SoluzioneDetail.Quantita_Prelievo + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "NumeroApparecchio = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "NomeUtensile = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "NumeroApparecchio2 = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio2) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "NomeUtensile2 = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile2) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "Note = " + SoluzioneDetail.Note;
                     }
-
-                    if (SoluzioneDetail.IDSoluzione != SoluzioneDetailOriginale.IDSoluzione)
+                    else
                     {
-                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR Precedente (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailOriginale.IDSoluzione) + " - Attuale = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
-                    }
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
 
-                    if (SoluzioneDetail.IDSchedaDocumenti != SoluzioneDetailOriginale.IDSchedaDocumenti)
-                    {
-                        SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.Tipologia_MR != SoluzioneDetailOriginale.Tipologia_MR)
+                        {
+                            SQLStringLog = SQLStringLog + "TipologiaMR Precedente = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetailOriginale.Tipologia_MR) + " - Attuale = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.CAS != SoluzioneDetailOriginale.CAS)
-                    {
-                        SQLStringLog = SQLStringLog + "CAS Precedente = " + SoluzioneDetailOriginale.CAS + " - Attuale = " + SoluzioneDetail.CAS + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.IDSoluzione != SoluzioneDetailOriginale.IDSoluzione)
+                        {
+                            SQLStringLog = SQLStringLog + "CodiceSoluzioneMR Precedente (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailOriginale.IDSoluzione) + " - Attuale = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.Concentrazione != SoluzioneDetailOriginale.Concentrazione)
-                    {
-                        SQLStringLog = SQLStringLog + "Concentrazione Precedente = " + SoluzioneDetailOriginale.Concentrazione + " - Attuale = " + SoluzioneDetail.Concentrazione + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.IDSchedaDocumenti != SoluzioneDetailOriginale.IDSchedaDocumenti)
+                        {
+                            SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.DataScadenza != SoluzioneDetailOriginale.DataScadenza)
-                    {
-                        SQLStringLog = SQLStringLog + "DataScadenza Precedente = " + SoluzioneDetailOriginale.DataScadenza + " - Attuale = " + DataScadenza + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.CAS != SoluzioneDetailOriginale.CAS)
+                        {
+                            SQLStringLog = SQLStringLog + "CAS Precedente = " + SoluzioneDetailOriginale.CAS + " - Attuale = " + SoluzioneDetail.CAS + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.UM_Prelievo != SoluzioneDetailOriginale.UM_Prelievo)
-                    {
-                        SQLStringLog = SQLStringLog + "UMPrelievo Precedente = " + SoluzioneDetailOriginale.UM_Prelievo + " - Attuale = " + SoluzioneDetail.UM_Prelievo + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.Concentrazione != SoluzioneDetailOriginale.Concentrazione)
+                        {
+                            SQLStringLog = SQLStringLog + "Concentrazione Precedente = " + SoluzioneDetailOriginale.Concentrazione + " - Attuale = " + SoluzioneDetail.Concentrazione + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.Quantita_Prelievo != SoluzioneDetailOriginale.Quantita_Prelievo)
-                    {
-                        SQLStringLog = SQLStringLog + "QuantitaPrelievo Precedente = " + SoluzioneDetailOriginale.Quantita_Prelievo + " - Attuale = " + SoluzioneDetail.Quantita_Prelievo + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.DataScadenza != SoluzioneDetailOriginale.DataScadenza)
+                        {
+                            SQLStringLog = SQLStringLog + "DataScadenza Precedente = " + SoluzioneDetailOriginale.DataScadenza + " - Attuale = " + DataScadenza + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.IDApparecchio != SoluzioneDetailOriginale.IDApparecchio)
-                    {
-                        SQLStringLog = SQLStringLog + "NumeroApparecchio Precedente = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetailOriginale.IDApparecchio) + " - Attuale = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio) + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.UM_Prelievo != SoluzioneDetailOriginale.UM_Prelievo)
+                        {
+                            SQLStringLog = SQLStringLog + "UMPrelievo Precedente = " + SoluzioneDetailOriginale.UM_Prelievo + " - Attuale = " + SoluzioneDetail.UM_Prelievo + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.IDUtensile != SoluzioneDetailOriginale.IDUtensile)
-                    {
-                        SQLStringLog = SQLStringLog + "NomeUtensile Precedente = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetailOriginale.IDUtensile) + " - Attuale = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile) + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.Quantita_Prelievo != SoluzioneDetailOriginale.Quantita_Prelievo)
+                        {
+                            SQLStringLog = SQLStringLog + "QuantitaPrelievo Precedente = " + SoluzioneDetailOriginale.Quantita_Prelievo + " - Attuale = " + SoluzioneDetail.Quantita_Prelievo + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.IDApparecchio2 != SoluzioneDetailOriginale.IDApparecchio2)
-                    {
-                        SQLStringLog = SQLStringLog + "NumeroApparecchio2 Precedente = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetailOriginale.IDApparecchio2) + " - Attuale = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio2) + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.IDApparecchio != SoluzioneDetailOriginale.IDApparecchio)
+                        {
+                            SQLStringLog = SQLStringLog + "NumeroApparecchio Precedente = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetailOriginale.IDApparecchio) + " - Attuale = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio) + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.IDUtensile2 != SoluzioneDetailOriginale.IDUtensile2)
-                    {
-                        SQLStringLog = SQLStringLog + "NomeUtensile2 Precedente = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetailOriginale.IDUtensile2) + " - Attuale = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile2) + System.Environment.NewLine;
-                    }
+                        if (SoluzioneDetail.IDUtensile != SoluzioneDetailOriginale.IDUtensile)
+                        {
+                            SQLStringLog = SQLStringLog + "NomeUtensile Precedente = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetailOriginale.IDUtensile) + " - Attuale = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile) + System.Environment.NewLine;
+                        }
 
-                    if (SoluzioneDetail.Note != SoluzioneDetailOriginale.Note)
-                    {
-                        SQLStringLog = SQLStringLog + "Note Precedente = " + SoluzioneDetailOriginale.Note + " - Attuale = " + SoluzioneDetail.Note;
+                        if (SoluzioneDetail.IDApparecchio2 != SoluzioneDetailOriginale.IDApparecchio2)
+                        {
+                            SQLStringLog = SQLStringLog + "NumeroApparecchio2 Precedente = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetailOriginale.IDApparecchio2) + " - Attuale = " + ctlTranscode.GetCodiceApparecchioByID(SoluzioneDetail.IDApparecchio2) + System.Environment.NewLine;
+                        }
+
+                        if (SoluzioneDetail.IDUtensile2 != SoluzioneDetailOriginale.IDUtensile2)
+                        {
+                            SQLStringLog = SQLStringLog + "NomeUtensile2 Precedente = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetailOriginale.IDUtensile2) + " - Attuale = " + ctlTranscode.GetNomeUtensileByID(SoluzioneDetail.IDUtensile2) + System.Environment.NewLine;
+                        }
+
+                        if (SoluzioneDetail.Note != SoluzioneDetailOriginale.Note)
+                        {
+                            SQLStringLog = SQLStringLog + "Note Precedente = " + SoluzioneDetailOriginale.Note + " - Attuale = " + SoluzioneDetail.Note;
+                        }
                     }
                 }
 
@@ -347,6 +356,8 @@ namespace EOS.Core.Control
 
                 cmd = null;
                 cnn = null;
+
+                AddLogSoluzioneDettaglio("Cancellazione", ModelSoluzioniDetails, ModelSoluzioniDetails.DataScadenza.ToString());
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;

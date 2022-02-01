@@ -1316,6 +1316,8 @@ namespace EOS.UI
                 ControlSolutionDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Soluzioni_Details ModelSolutionDetail = new EOS.Core.Model.Model_Soluzioni_Details();
 
+                ControlSolutionDetail.IDUtente = IDUtente;
+
                 for (int i = 0; i < gviewSoluzioniDetails.SelectedRowsCount; i++)
                 {
                     int rowHandle = gviewSoluzioniDetails.GetSelectedRows()[i];

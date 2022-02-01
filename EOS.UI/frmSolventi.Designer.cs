@@ -303,7 +303,7 @@ namespace EOS.UI
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1894, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(1892, 47);
             // 
             // barDockControlBottom
             // 
@@ -311,7 +311,7 @@ namespace EOS.UI
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 963);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1894, 21);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1892, 21);
             // 
             // barDockControlLeft
             // 
@@ -325,7 +325,7 @@ namespace EOS.UI
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1894, 47);
+            this.barDockControlRight.Location = new System.Drawing.Point(1892, 47);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 916);
             // 
@@ -1117,7 +1117,7 @@ namespace EOS.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1911, 954);
+            this.ClientSize = new System.Drawing.Size(1909, 954);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
