@@ -102,7 +102,7 @@ namespace EOS.Core.Control
                 cmd = null;
                 cnn = null;
 
-                AddLogSoluzioneDettaglio("Cancellazione", SoluzioneDetail, DataScadenza, newid);
+                AddLogSoluzioneDettaglio("Inserimento", SoluzioneDetail, DataScadenza, newid);
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;

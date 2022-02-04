@@ -1211,7 +1211,7 @@ namespace EOS.UI
                         ControllerSoluzioni.IDUtente = IDUtente;
                         EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
                         ModelSoluzioni = ControllerSoluzioni.GetSolutionByID(newid).First().Value;
-                        ControllerSoluzioni.UpdateSolution(ModelSoluzioni);
+                        ControllerSoluzioni.UpdateSolution(ModelSoluzioni,0);
 
                         ModelSoluzioni = null;
                         ControllerSoluzioni = null;
@@ -1479,7 +1479,7 @@ namespace EOS.UI
                         ControlSolventi.IDUtente = IDUtente;
                         EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
                         ModelSolventi = ControlSolventi.GetSolventeByID(newid).First().Value;
-                        ControlSolventi.UpdateSolvente(ModelSolventi);
+                        ControlSolventi.UpdateSolvente(ModelSolventi,0);
 
                         ModelSolventi = null;
                         ControlSolventi = null;

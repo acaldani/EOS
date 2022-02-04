@@ -209,7 +209,7 @@ namespace EOS.Core.Control
             }
         }
 
-        public int UpdateSolution(Model_Soluzioni Soluzione)
+        public int UpdateSolution(Model_Soluzioni Soluzione, int addLog=1)
         {
             string DataPreparazione;
             string DataCreazione;
@@ -284,8 +284,11 @@ namespace EOS.Core.Control
                 cmd = null;
                 cnn = null;
 
-                AddLogSoluzione("Aggiornamento", Soluzione, DataPreparazione, DataScadenza, DataCreazione, 0, SoluzioneOriginale);
-
+                if(addLog==1)
+                {
+                    AddLogSoluzione("Aggiornamento", Soluzione, DataPreparazione, DataScadenza, DataCreazione, 0, SoluzioneOriginale);
+                }
+                
                 SoluzioneOriginale = null;
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
@@ -436,12 +439,12 @@ namespace EOS.Core.Control
 
                     if (Soluzione.IDUbicazione != SoluzioneOriginale.IDUbicazione)
                     {
-                        SQLStringLog = SQLStringLog + "Ubicazione  Precedente = " + ctlTranscode.GetUbicazioneByID(Soluzione.IDUbicazione) + " - Attuale = " + ctlTranscode.GetUbicazioneByID(Soluzione.IDUbicazione) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "Ubicazione  Precedente = " + ctlTranscode.GetUbicazioneByID(SoluzioneOriginale.IDUbicazione) + " - Attuale = " + ctlTranscode.GetUbicazioneByID(Soluzione.IDUbicazione) + System.Environment.NewLine;
                     }
 
                     if (Soluzione.IDStato != SoluzioneOriginale.IDStato)
                     {
-                        SQLStringLog = SQLStringLog + "Stato  Precedente = " + ctlTranscode.GetStatoByID(Soluzione.IDStato) + " - Attuale = " + ctlTranscode.GetStatoByID(Soluzione.IDStato) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "Stato  Precedente = " + ctlTranscode.GetStatoByID(SoluzioneOriginale.IDStato) + " - Attuale = " + ctlTranscode.GetStatoByID(Soluzione.IDStato) + System.Environment.NewLine;
                     }
                 }
 

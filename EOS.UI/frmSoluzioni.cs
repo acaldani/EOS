@@ -1344,7 +1344,8 @@ namespace EOS.UI
                     EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
                     ModelSoluzioni = ControllerSoluzioni.GetSolutionByID(IDSoluzione).First().Value;
                     ModelSoluzioni.DataScadenza = Convert.ToDateTime(null);
-                    ControllerSoluzioni.UpdateSolution(ModelSoluzioni);
+                    ControllerSoluzioni.IDUtente = IDUtente;
+                    ControllerSoluzioni.UpdateSolution(ModelSoluzioni,0);
 
                     ModelSoluzioni = null;
                     ControllerSoluzioni = null;

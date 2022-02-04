@@ -361,7 +361,6 @@ namespace EOS.UI
             this.tbVisualizzaLog.Caption = "Visualizza Log";
             this.tbVisualizzaLog.Id = 8;
             this.tbVisualizzaLog.Name = "tbVisualizzaLog";
-            this.tbVisualizzaLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.tbVisualizzaLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbVisualizzaLog_ItemClick);
             // 
             // bar3

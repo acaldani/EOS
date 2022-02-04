@@ -160,7 +160,7 @@ namespace EOS.Core.Control
             }
         }
 
-        public int UpdateSolvente(Model_Solventi Solvente)
+        public int UpdateSolvente(Model_Solventi Solvente, int addLog = 1)
         {
             string DataPreparazione;
             string DataCreazione;
@@ -227,7 +227,10 @@ namespace EOS.Core.Control
                 cmd = null;
                 cnn = null;
 
-                AddLogSolVente("Aggiornamento", Solvente, DataPreparazione, DataScadenza, DataCreazione, 0, SolventeOriginale);
+                if(addLog==1)
+                {
+                    AddLogSolVente("Aggiornamento", Solvente, DataPreparazione, DataScadenza, DataCreazione, 0, SolventeOriginale);
+                }
 
                 SolventeOriginale = null;
 

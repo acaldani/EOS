@@ -923,7 +923,8 @@ namespace EOS.UI
                     EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
                     ModelSolventi = ControlSolventi.GetSolventeByID(IDSolvente).First().Value;
                     ModelSolventi.DataScadenza = Convert.ToDateTime(null);
-                    ControlSolventi.UpdateSolvente(ModelSolventi);
+                    ControlSolventi.IDUtente = IDUtente;
+                    ControlSolventi.UpdateSolvente(ModelSolventi,0);
 
                     ModelSolventi = null;
                     ControlSolventi = null;
