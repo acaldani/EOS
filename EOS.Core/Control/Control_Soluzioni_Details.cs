@@ -224,9 +224,9 @@ namespace EOS.Core.Control
                     if (TipoOperazione == "Inserimento")
                     {
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
-                        SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "CAS = " + SoluzioneDetail.CAS + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "Concentrazione = " + SoluzioneDetail.Concentrazione + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "DataScadenza = " + DataScadenza + System.Environment.NewLine;
@@ -242,20 +242,24 @@ namespace EOS.Core.Control
                     {
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
 
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
+
+                        SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+
                         if (SoluzioneDetail.Tipologia_MR != SoluzioneDetailOriginale.Tipologia_MR)
                         {
                             SQLStringLog = SQLStringLog + "TipologiaMR Precedente = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetailOriginale.Tipologia_MR) + " - Attuale = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
                         }
 
-                        if (SoluzioneDetail.IDSoluzione != SoluzioneDetailOriginale.IDSoluzione)
-                        {
-                            SQLStringLog = SQLStringLog + "CodiceSoluzioneMR Precedente (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailOriginale.IDSoluzione) + " - Attuale = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
-                        }
+                        //if (SoluzioneDetail.IDSoluzione != SoluzioneDetailOriginale.IDSoluzione)
+                        //{
+                        //    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR Precedente (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailOriginale.IDSoluzione) + " - Attuale = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
+                        //}
 
-                        if (SoluzioneDetail.IDSchedaDocumenti != SoluzioneDetailOriginale.IDSchedaDocumenti)
-                        {
-                            SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
-                        }
+                        //if (SoluzioneDetail.IDSchedaDocumenti != SoluzioneDetailOriginale.IDSchedaDocumenti)
+                        //{
+                        //    SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        //}
 
                         if (SoluzioneDetail.CAS != SoluzioneDetailOriginale.CAS)
                         {

@@ -29,44 +29,129 @@ namespace EOS.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.gridLog = new DevExpress.XtraGrid.GridControl();
+            this.gviewLog = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colTipoOperazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repMemo = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.colTabella = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodiceSoluzione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDettaglioOperazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNomeUtente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDataOperazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repMemo)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // gridLog
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1467, 535);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridLog.Location = new System.Drawing.Point(12, 12);
+            this.gridLog.MainView = this.gviewLog;
+            this.gridLog.Name = "gridLog";
+            this.gridLog.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repMemo});
+            this.gridLog.Size = new System.Drawing.Size(870, 551);
+            this.gridLog.TabIndex = 0;
+            this.gridLog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gviewLog});
             // 
-            // gridView1
+            // gviewLog
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.gviewLog.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colTipoOperazione,
+            this.colTabella,
+            this.colCodiceSoluzione,
+            this.colDettaglioOperazione,
+            this.colNomeUtente,
+            this.colDataOperazione});
+            this.gviewLog.GridControl = this.gridLog;
+            this.gviewLog.Name = "gviewLog";
+            this.gviewLog.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gviewLog.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gviewLog.OptionsBehavior.Editable = false;
+            this.gviewLog.OptionsView.RowAutoHeight = true;
+            this.gviewLog.OptionsView.ShowGroupPanel = false;
+            this.gviewLog.DoubleClick += new System.EventHandler(this.gviewLog_DoubleClick);
+            // 
+            // colTipoOperazione
+            // 
+            this.colTipoOperazione.Caption = "Tipo Operazione";
+            this.colTipoOperazione.ColumnEdit = this.repMemo;
+            this.colTipoOperazione.FieldName = "TipoOperazione";
+            this.colTipoOperazione.Name = "colTipoOperazione";
+            this.colTipoOperazione.Visible = true;
+            this.colTipoOperazione.VisibleIndex = 0;
+            // 
+            // repMemo
+            // 
+            this.repMemo.Name = "repMemo";
+            // 
+            // colTabella
+            // 
+            this.colTabella.Caption = "Tabella";
+            this.colTabella.FieldName = "Tabella";
+            this.colTabella.Name = "colTabella";
+            this.colTabella.Visible = true;
+            this.colTabella.VisibleIndex = 1;
+            // 
+            // colCodiceSoluzione
+            // 
+            this.colCodiceSoluzione.Caption = "Codice Soluzione";
+            this.colCodiceSoluzione.FieldName = "CodiceSoluzione";
+            this.colCodiceSoluzione.Name = "colCodiceSoluzione";
+            this.colCodiceSoluzione.Visible = true;
+            this.colCodiceSoluzione.VisibleIndex = 2;
+            // 
+            // colDettaglioOperazione
+            // 
+            this.colDettaglioOperazione.Caption = "Dettaglio Operazione";
+            this.colDettaglioOperazione.FieldName = "Dettaglio Operazione";
+            this.colDettaglioOperazione.Name = "colDettaglioOperazione";
+            this.colDettaglioOperazione.Visible = true;
+            this.colDettaglioOperazione.VisibleIndex = 3;
+            // 
+            // colNomeUtente
+            // 
+            this.colNomeUtente.Caption = "Nome Utente";
+            this.colNomeUtente.FieldName = "NomeUtente";
+            this.colNomeUtente.Name = "colNomeUtente";
+            this.colNomeUtente.Visible = true;
+            this.colNomeUtente.VisibleIndex = 4;
+            // 
+            // colDataOperazione
+            // 
+            this.colDataOperazione.Caption = "Data Operazione";
+            this.colDataOperazione.FieldName = "DataOperazione";
+            this.colDataOperazione.Name = "colDataOperazione";
+            this.colDataOperazione.Visible = true;
+            this.colDataOperazione.VisibleIndex = 5;
             // 
             // frmLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1491, 559);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(894, 575);
+            this.Controls.Add(this.gridLog);
             this.Name = "frmLog";
-            this.Text = "Log";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.Text = "Visualizza Log";
+            this.Load += new System.EventHandler(this.frmLog_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repMemo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridLog;
+        private DevExpress.XtraGrid.Views.Grid.GridView gviewLog;
+        private DevExpress.XtraGrid.Columns.GridColumn colTipoOperazione;
+        private DevExpress.XtraGrid.Columns.GridColumn colTabella;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodiceSoluzione;
+        private DevExpress.XtraGrid.Columns.GridColumn colDettaglioOperazione;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repMemo;
+        private DevExpress.XtraGrid.Columns.GridColumn colNomeUtente;
+        private DevExpress.XtraGrid.Columns.GridColumn colDataOperazione;
     }
 }

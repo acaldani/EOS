@@ -1000,6 +1000,15 @@ namespace EOS.UI
                         cmd.Connection = cnn;
                         newid = Convert.ToInt32(cmd.ExecuteScalar());
 
+                        Core.Model.Model_Soluzioni ModelSoluzione = new Core.Model.Model_Soluzioni();
+                        Core.Control.Controller_Soluzioni ControlSoluzione = new Core.Control.Controller_Soluzioni();
+                        ControlSoluzione.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                        ControlSoluzione.IDUtente = IDUtente;
+                        ModelSoluzione = ControlSoluzione.GetSolutionByID(newid).First().Value;
+                        ControlSoluzione.AddLogSoluzione("Inserimento", ModelSoluzione, ModelSoluzione.DataPreparazione.ToString(), ModelSoluzione.DataScadenza.ToString(), ModelSoluzione.DataCreazione.ToString());
+                        ControlSoluzione = null;
+                        ModelSoluzione = null;
+
                         for (int c = 0; c < gviewDuplicaSoluzioniMAT.RowCount; c++)
                         {
                             EOS.Core.Model.Model_MaterialiMR ModelMaterialeSelezionato = new EOS.Core.Model.Model_MaterialiMR();
@@ -1073,12 +1082,25 @@ namespace EOS.UI
                             }
 
                             SQLString = SQLString + "FROM [EOS].[dbo].[Soluzioni_Details] ";
-                            SQLString = SQLString + "WHERE IDSoluzioneDetail={1} ";
+                            SQLString = SQLString + "WHERE IDSoluzioneDetail={1}; SELECT SCOPE_IDENTITY() ";
                             SQLString = string.Format(SQLString, newid, Convert.ToInt32(gviewDuplicaSoluzioniMAT.GetRowCellValue(c, "IDSoluzioneDetail")));
 
                             cmd.CommandText = SQLString;
                             cmd.Connection = cnn;
-                            cmd.ExecuteNonQuery();
+                            int newiddetail = 0;
+                            newiddetail = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            ControlMaterialeSelezionato = null;
+                            ModelMaterialeSelezionato = null;
+                            
+                            Core.Model.Model_Soluzioni_Details ModelSoluzioneDetail = new Core.Model.Model_Soluzioni_Details();
+                            Core.Control.Control_Soluzioni_Details ControlSoluzioneDetail = new Core.Control.Control_Soluzioni_Details();
+                            ControlSoluzioneDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                            ControlSoluzioneDetail.IDUtente = IDUtente;
+                            ModelSoluzioneDetail = ControlSoluzioneDetail.GetByIDSolutionDetail(newiddetail).First().Value;
+                            ControlSoluzioneDetail.AddLogSoluzioneDettaglio("Inserimento", ModelSoluzioneDetail, ModelSoluzioneDetail.DataScadenza.ToString());
+                            ControlSoluzioneDetail = null;
+                            ModelSoluzioneDetail = null;
 
                             ControlMaterialeSelezionato = null;
                             ModelMaterialeSelezionato = null;
@@ -1157,12 +1179,25 @@ namespace EOS.UI
                             }
 
                             SQLString = SQLString + "FROM [EOS].[dbo].[Soluzioni_Details] ";
-                            SQLString = SQLString + "WHERE IDSoluzioneDetail={1} ";
+                            SQLString = SQLString + "WHERE IDSoluzioneDetail={1}; SELECT SCOPE_IDENTITY() ";
                             SQLString = string.Format(SQLString, newid, Convert.ToInt32(gviewDuplicaSoluzioniSOL.GetRowCellValue(c, "IDSoluzioneDetail")));
 
                             cmd.CommandText = SQLString;
                             cmd.Connection = cnn;
-                            cmd.ExecuteNonQuery();
+                            int newiddetail = 0;
+                            newiddetail = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            ControlSoluzioneSelezionata = null;
+                            ModelSoluzioneSelezionata = null;
+
+                            Core.Model.Model_Soluzioni_Details ModelSoluzioneDetail = new Core.Model.Model_Soluzioni_Details();
+                            Core.Control.Control_Soluzioni_Details ControlSoluzioneDetail = new Core.Control.Control_Soluzioni_Details();
+                            ControlSoluzioneDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                            ControlSoluzioneDetail.IDUtente = IDUtente;
+                            ModelSoluzioneDetail = ControlSoluzioneDetail.GetByIDSolutionDetail(newiddetail).First().Value;
+                            ControlSoluzioneDetail.AddLogSoluzioneDettaglio("Inserimento", ModelSoluzioneDetail, ModelSoluzioneDetail.DataScadenza.ToString());
+                            ControlSoluzioneDetail = null;
+                            ModelSoluzioneDetail = null;
 
                             ControlSoluzioneSelezionata = null;
                             ModelSoluzioneSelezionata = null;
@@ -1173,6 +1208,7 @@ namespace EOS.UI
 
                         EOS.Core.Control.Controller_Soluzioni ControllerSoluzioni = new Core.Control.Controller_Soluzioni();
                         ControllerSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                        ControllerSoluzioni.IDUtente = IDUtente;
                         EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
                         ModelSoluzioni = ControllerSoluzioni.GetSolutionByID(newid).First().Value;
                         ControllerSoluzioni.UpdateSolution(ModelSoluzioni);
@@ -1238,6 +1274,15 @@ namespace EOS.UI
                         cmd.CommandText = SQLString;
                         cmd.Connection = cnn;
                         newid = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        Core.Model.Model_Solventi ModelSolVente = new Core.Model.Model_Solventi();
+                        Core.Control.Control_Solventi ControlSolVente = new Core.Control.Control_Solventi();
+                        ControlSolVente.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                        ControlSolVente.IDUtente = IDUtente;
+                        ModelSolVente = ControlSolVente.GetSolventeByID(newid).First().Value;
+                        ControlSolVente.AddLogSolVente("Inserimento", ModelSolVente, ModelSolVente.DataPreparazione.ToString(), ModelSolVente.DataScadenza.ToString(), ModelSolVente.DataCreazione.ToString());
+                        ControlSolVente = null;
+                        ModelSolVente = null;
 
                         for (int c = 0; c < gviewDuplicaSolventiMAT.RowCount; c++)
                         {
@@ -1312,12 +1357,22 @@ namespace EOS.UI
                             }
 
                             SQLString = SQLString + "FROM [EOS].[dbo].[Solventi_Details] ";
-                            SQLString = SQLString + "WHERE IDSolventeDetail={1} ";
+                            SQLString = SQLString + "WHERE IDSolventeDetail={1}; SELECT SCOPE_IDENTITY() ";
                             SQLString = string.Format(SQLString, newid, Convert.ToInt32(gviewDuplicaSolventiMAT.GetRowCellValue(c, "IDSolventeDetail")));
 
                             cmd.CommandText = SQLString;
                             cmd.Connection = cnn;
-                            cmd.ExecuteNonQuery();
+                            int newiddetail = 0;
+                            newiddetail = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            Core.Model.Model_Solventi_Details ModelSolventeDetail = new Core.Model.Model_Solventi_Details();
+                            Core.Control.Control_Solventi_Details ControlSolventeDetail = new Core.Control.Control_Solventi_Details();
+                            ControlSolventeDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                            ControlSolventeDetail.IDUtente = IDUtente;
+                            ModelSolventeDetail = ControlSolventeDetail.GetByIDSolventeDetail(newiddetail).First().Value;
+                            ControlSolventeDetail.AddLogSolventeDettaglio("Inserimento", ModelSolventeDetail, ModelSolventeDetail.DataScadenza.ToString());
+                            ControlSolventeDetail = null;
+                            ModelSolventeDetail = null;
 
                             ControlMaterialeSelezionato = null;
                             ModelMaterialeSelezionato = null;
@@ -1395,12 +1450,22 @@ namespace EOS.UI
                             }
 
                             SQLString = SQLString + "FROM [EOS].[dbo].[Solventi_Details] ";
-                            SQLString = SQLString + "WHERE IDSolventeDetail={1} ";
+                            SQLString = SQLString + "WHERE IDSolventeDetail={1}; SELECT SCOPE_IDENTITY() ";
                             SQLString = string.Format(SQLString, newid, Convert.ToInt32(gviewDuplicaSolventiSOV.GetRowCellValue(c, "IDSolventeDetail")));
 
                             cmd.CommandText = SQLString;
                             cmd.Connection = cnn;
-                            cmd.ExecuteNonQuery();
+                            int newiddetail = 0;
+                            newiddetail = Convert.ToInt32(cmd.ExecuteScalar());
+
+                            Core.Model.Model_Solventi_Details ModelSolventeDetail = new Core.Model.Model_Solventi_Details();
+                            Core.Control.Control_Solventi_Details ControlSolventeDetail = new Core.Control.Control_Solventi_Details();
+                            ControlSolventeDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                            ControlSolventeDetail.IDUtente = IDUtente;
+                            ModelSolventeDetail = ControlSolventeDetail.GetByIDSolventeDetail(newiddetail).First().Value;
+                            ControlSolventeDetail.AddLogSolventeDettaglio("Inserimento", ModelSolventeDetail, ModelSolventeDetail.DataScadenza.ToString());
+                            ControlSolventeDetail = null;
+                            ModelSolventeDetail = null;
 
                             ControlSolventeSelezionato = null;
                             ModelSolventeSelezionato = null;
@@ -1411,6 +1476,7 @@ namespace EOS.UI
 
                         EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
                         ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                        ControlSolventi.IDUtente = IDUtente;
                         EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
                         ModelSolventi = ControlSolventi.GetSolventeByID(newid).First().Value;
                         ControlSolventi.UpdateSolvente(ModelSolventi);

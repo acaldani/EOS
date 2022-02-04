@@ -36,6 +36,7 @@ namespace EOS.UI
         bool changingUtensile2 = false;
         //string activeFilter = "([Stato] <> 'Annullata')";
         bool activeFilterTrafficLight = false;
+        int restorefocus = 0;
 
         public frmSoluzioni()
         {
@@ -125,16 +126,18 @@ namespace EOS.UI
 
         private void gviewSoluzioni_FocusedRowChanged(object sender, EventArgs e)
         {
-            if(DataAdd==false)
+            if(restorefocus==0)
             {
-                IDSoluzione = Convert.ToInt32(gviewSoluzioni.GetFocusedRowCellValue("IDSoluzione"));
-
-                if(IDSoluzione!=0)
+                if (DataAdd == false)
                 {
-                    LoadControl();
-                    LoadSoluzioniCbo();
+                    IDSoluzione = Convert.ToInt32(gviewSoluzioni.GetFocusedRowCellValue("IDSoluzione"));
+
+                    if (IDSoluzione != 0)
+                    {
+                        LoadControl();
+                        LoadSoluzioniCbo();
+                    }
                 }
-                
             }
         }
 
@@ -971,7 +974,11 @@ namespace EOS.UI
             {
                 int rowHandle = gviewSoluzioni.LocateByValue("IDSoluzione", IDSoluzioneCalled);
                 if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    restorefocus = 1;
                     gviewSoluzioni.FocusedRowHandle = rowHandle;
+                    restorefocus = 0;
+                }
             }
             LoadControl();
             LoadSoluzioniCbo();
@@ -988,7 +995,9 @@ namespace EOS.UI
                 int rowHandle = gviewSoluzioni.LocateByValue("IDSoluzione", IDSoluzioneCalled);
                 if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
                 {
+                    restorefocus = 1;
                     gviewSoluzioni.FocusedRowHandle = rowHandle;
+                    restorefocus = 0;
                     IDSoluzioneCalled = 0;
                 }
             }
@@ -2351,6 +2360,36 @@ namespace EOS.UI
             frmLogin.SaveUserPreferences("frmSoluzioni", "gridDocumenti", str, IDUtente);
 
             str = null;
+        }
+
+        private void tbVisualizzaLog_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmLog LogView = new frmLog();
+            LogView.IDUtente = IDUtente;
+
+            int idSoluzione = 0;
+
+            if (gviewSoluzioni.SelectedRowsCount == 1)
+            {
+                int[] selectedRows = gviewSoluzioni.GetSelectedRows();
+                int selectedRow = 0;
+                foreach (int rowHandle in selectedRows)
+                {
+                    selectedRow = rowHandle;
+                }
+                if (selectedRow > -1)
+                {
+                    idSoluzione = Int32.Parse(gviewSoluzioni.GetRowCellValue(selectedRow, "IDSoluzione").ToString());
+                }
+            }
+
+            EOS.Core.Control.Control_Transcode ctlTranscode = new EOS.Core.Control.Control_Transcode();
+
+            LogView.CodiceSoluzione = ctlTranscode.GetCodiceSoluzioneByID(idSoluzione);
+
+            ctlTranscode = null;
+
+            LogView.Show();
         }
     }
 }

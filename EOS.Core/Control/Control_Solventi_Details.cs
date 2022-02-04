@@ -215,9 +215,9 @@ namespace EOS.Core.Control
                     if (TipoOperazione == "Inserimento")
                     {
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolventeMaster) + System.Environment.NewLine;
-                        SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SolventeDetail.Tipologia_MR) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro (Componente) = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolvente) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SolventeDetail.Tipologia_MR) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "CAS = " + SolventeDetail.CAS + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "DataScadenza = " + DataScadenza + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "UMPrelievo = " + SolventeDetail.UM_Prelievo + System.Environment.NewLine;
@@ -245,20 +245,24 @@ namespace EOS.Core.Control
 
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolventeMaster) + System.Environment.NewLine;
 
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro (Componente) = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolvente) + System.Environment.NewLine;
+
+                        SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+
                         if (SolventeDetail.Tipologia_MR != SolventeDetailOriginale.Tipologia_MR)
                         {
                             SQLStringLog = SQLStringLog + "TipologiaMR Precedente = " + ctlTranscode.GetTipologiaMRByID(SolventeDetailOriginale.Tipologia_MR) + " - Attuale = " + ctlTranscode.GetTipologiaMRByID(SolventeDetail.Tipologia_MR) + System.Environment.NewLine;
                         }
 
-                        if (SolventeDetail.IDSolvente != SolventeDetailOriginale.IDSolvente)
-                        {
-                            SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro Precedente (Componente) = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetailOriginale.IDSolvente) + " - Attuale = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolvente) + System.Environment.NewLine;
-                        }
+                        //if (SolventeDetail.IDSolvente != SolventeDetailOriginale.IDSolvente)
+                        //{
+                        //    SQLStringLog = SQLStringLog + "CodiceSoluzioneDiLavoro Precedente (Componente) = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetailOriginale.IDSolvente) + " - Attuale = " + ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolvente) + System.Environment.NewLine;
+                        //}
 
-                        if (SolventeDetail.IDSchedaDocumenti != SolventeDetailOriginale.IDSchedaDocumenti)
-                        {
-                            SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetail.IDSchedaDocumenti) + System.Environment.NewLine;
-                        }
+                        //if (SolventeDetail.IDSchedaDocumenti != SolventeDetailOriginale.IDSchedaDocumenti)
+                        //{
+                        //    SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale Precedente (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetailOriginale.IDSchedaDocumenti) + " - Attuale = " + ctlTranscode.GetIdentificativoELottoByID(SolventeDetail.IDSchedaDocumenti) + System.Environment.NewLine;
+                        //}
 
                         if (SolventeDetail.CAS != SolventeDetailOriginale.CAS)
                         {
@@ -315,7 +319,7 @@ namespace EOS.Core.Control
                 }
                 else
                 {
-                    ctlLog.InsertLog(TipoOperazione, "Soluzioni di Lavoro Dettaglio", SolventeDetail.IDSolvente, ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolventeMaster), SQLStringLog, IDUtente);
+                    ctlLog.InsertLog(TipoOperazione, "Soluzioni di Lavoro Dettaglio", SolventeDetail.IDSolventeDetail, ctlTranscode.GetCodiceSolventeByID(SolventeDetail.IDSolventeMaster), SQLStringLog, IDUtente);
                 }
 
                 ctlTranscode = null;

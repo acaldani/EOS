@@ -30,6 +30,7 @@ namespace EOS.UI
         bool DataChanged = false;
         //string activeFilter = "([Stato] <> 'Annullata')";
         bool activeFilterTrafficLight = false;
+        int restorefocus = 0;
 
         public frmSolventi()
         {
@@ -94,11 +95,14 @@ namespace EOS.UI
 
         private void gviewSolventi_FocusedRowChanged(object sender, EventArgs e)
         {
-            if (DataAdd == false)
+            if(restorefocus==0)
             {
-                IDSolvente = Convert.ToInt32(gviewSolventi.GetFocusedRowCellValue("IDSolvente"));
-                LoadControl();
-                LoadSolventiCbo();
+                if (DataAdd == false)
+                {
+                    IDSolvente = Convert.ToInt32(gviewSolventi.GetFocusedRowCellValue("IDSolvente"));
+                    LoadControl();
+                    LoadSolventiCbo();
+                }
             }
         }
 
@@ -680,7 +684,11 @@ namespace EOS.UI
             {
                 int rowHandle = gviewSolventi.LocateByValue("IDSolvente", IDSolventeCalled);
                 if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    restorefocus = 1;
                     gviewSolventi.FocusedRowHandle = rowHandle;
+                    restorefocus = 0;
+                }
             }
             LoadControl();
             LoadSolventiCbo();
@@ -696,7 +704,9 @@ namespace EOS.UI
                 int rowHandle = gviewSolventi.LocateByValue("IDSolvente", IDSolventeCalled);
                 if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
                 {
+                    restorefocus = 1;
                     gviewSolventi.FocusedRowHandle = rowHandle;
+                    restorefocus = 0;
                     IDSolventeCalled = 0;
                 }
             }

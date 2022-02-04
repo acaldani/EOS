@@ -39,6 +39,7 @@ namespace EOS.UI
             this.tbAggiorna = new DevExpress.XtraBars.BarButtonItem();
             this.tbStampa = new DevExpress.XtraBars.BarButtonItem();
             this.tbEsportaExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.tbLog = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -213,9 +214,10 @@ namespace EOS.UI
             this.tbAggiorna,
             this.tbDuplica,
             this.tbStampa,
-            this.tbEsportaExcel});
+            this.tbEsportaExcel,
+            this.tbLog});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -238,7 +240,8 @@ namespace EOS.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.tbSalva),
             new DevExpress.XtraBars.LinkPersistInfo(this.tbAggiorna),
             new DevExpress.XtraBars.LinkPersistInfo(this.tbStampa),
-            new DevExpress.XtraBars.LinkPersistInfo(this.tbEsportaExcel)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.tbEsportaExcel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.tbLog)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -284,6 +287,13 @@ namespace EOS.UI
             this.tbEsportaExcel.Id = 6;
             this.tbEsportaExcel.Name = "tbEsportaExcel";
             this.tbEsportaExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbEsportaExcel_ItemClick);
+            // 
+            // tbLog
+            // 
+            this.tbLog.Caption = "Visualizza Log";
+            this.tbLog.Id = 7;
+            this.tbLog.Name = "tbLog";
+            this.tbLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bar3
             // 
@@ -1301,5 +1311,6 @@ namespace EOS.UI
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+        private DevExpress.XtraBars.BarButtonItem tbLog;
     }
 }

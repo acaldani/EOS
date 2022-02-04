@@ -45,6 +45,7 @@ namespace EOS.UI
             this.tbStampa = new DevExpress.XtraBars.BarButtonItem();
             this.tbStampaReport = new DevExpress.XtraBars.BarButtonItem();
             this.tbEsportaExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.tbVisualizzaLog = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -272,9 +273,10 @@ namespace EOS.UI
             this.tbDuplica,
             this.tbStampa,
             this.tbEsportaExcel,
-            this.tbStampaReport});
+            this.tbStampaReport,
+            this.tbVisualizzaLog});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -298,7 +300,8 @@ namespace EOS.UI
             new DevExpress.XtraBars.LinkPersistInfo(this.tbAggiorna),
             new DevExpress.XtraBars.LinkPersistInfo(this.tbStampa),
             new DevExpress.XtraBars.LinkPersistInfo(this.tbStampaReport),
-            new DevExpress.XtraBars.LinkPersistInfo(this.tbEsportaExcel)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.tbEsportaExcel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.tbVisualizzaLog)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -353,6 +356,14 @@ namespace EOS.UI
             this.tbEsportaExcel.Name = "tbEsportaExcel";
             this.tbEsportaExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbEsportaExcel_ItemClick);
             // 
+            // tbVisualizzaLog
+            // 
+            this.tbVisualizzaLog.Caption = "Visualizza Log";
+            this.tbVisualizzaLog.Id = 8;
+            this.tbVisualizzaLog.Name = "tbVisualizzaLog";
+            this.tbVisualizzaLog.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.tbVisualizzaLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbVisualizzaLog_ItemClick);
+            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -371,7 +382,7 @@ namespace EOS.UI
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1894, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(1892, 47);
             // 
             // barDockControlBottom
             // 
@@ -379,7 +390,7 @@ namespace EOS.UI
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 963);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1894, 21);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1892, 21);
             // 
             // barDockControlLeft
             // 
@@ -393,7 +404,7 @@ namespace EOS.UI
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1894, 47);
+            this.barDockControlRight.Location = new System.Drawing.Point(1892, 47);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 916);
             // 
@@ -1533,7 +1544,7 @@ namespace EOS.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1911, 954);
+            this.ClientSize = new System.Drawing.Size(1909, 954);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1770,5 +1781,6 @@ namespace EOS.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemX;
         private DevExpress.XtraEditors.GridLookUpEdit cboUtensile2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
+        private DevExpress.XtraBars.BarButtonItem tbVisualizzaLog;
     }
 }

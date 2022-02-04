@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace EOS.Core.Control
 {
-    class Control_Transcode
+    public class Control_Transcode
     {
         //TipologiaMR
         public string GetTipologiaMRByID(int ID)
