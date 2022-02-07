@@ -293,6 +293,7 @@ namespace EOS.UI
             this.tbLog.Caption = "Visualizza Log";
             this.tbLog.Id = 7;
             this.tbLog.Name = "tbLog";
+            this.tbLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbLog_ItemClick);
             // 
             // bar3
             // 

@@ -1572,5 +1572,35 @@ namespace EOS.UI
 
             str = null;
         }
+
+        private void tbLog_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmLog LogView = new frmLog();
+            LogView.IDUtente = IDUtente;
+
+            int idSolvente = 0;
+
+            if (gviewSolventi.SelectedRowsCount == 1)
+            {
+                int[] selectedRows = gviewSolventi.GetSelectedRows();
+                int selectedRow = 0;
+                foreach (int rowHandle in selectedRows)
+                {
+                    selectedRow = rowHandle;
+                }
+                if (selectedRow > -1)
+                {
+                    idSolvente = Int32.Parse(gviewSolventi.GetRowCellValue(selectedRow, "IDSolvente").ToString());
+                }
+            }
+
+            EOS.Core.Control.Control_Transcode ctlTranscode = new EOS.Core.Control.Control_Transcode();
+
+            LogView.CodiceSoluzione = ctlTranscode.GetCodiceSolventeByID(idSolvente);
+
+            ctlTranscode = null;
+
+            LogView.Show();
+        }
     }
 }
