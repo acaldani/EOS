@@ -168,6 +168,13 @@ namespace EOS.Core.Control
                 cmd.Connection = cnn;
                 cmd.ExecuteNonQuery();
 
+                cmd = null;
+                cnn = null;
+
+                AddLogSolventeDettaglio("Aggiornamento", SolventeDetail, DataScadenza, 0, SolventeDetailOriginale);
+
+                SolventeDetailOriginale = null;
+
                 EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
                 ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
@@ -176,16 +183,11 @@ namespace EOS.Core.Control
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 ControlCalcolo.SetDataScadenza(SolventeDetail.IDSolventeMaster, ModelSolventi.DefaultGiorniScadenza, ModelSolventi.DataPreparazione, "Solvente");
 
+                ControlSolventi.AddLogSolVente("Aggiornamento", ModelSolventi, ModelSolventi.DataPreparazione.ToString(), ModelSolventi.DataScadenza.ToString(), ModelSolventi.DataCreazione.ToString());
+
                 ModelSolventi = null;
                 ControlSolventi = null;
                 ControlCalcolo = null;
-
-                cmd = null;
-                cnn = null;
-
-                AddLogSolventeDettaglio("Aggiornamento", SolventeDetail, DataScadenza, 0, SolventeDetailOriginale);
-
-                SolventeDetailOriginale = null;
 
                 return 1;
             }

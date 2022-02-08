@@ -57,6 +57,8 @@
     <Compile Include="Control\Control_Log.cs" />
     <Compile Include="Control\Control_Materiale_Tipologia.cs" />
     <Compile Include="Control\Control_MaterialiMR.cs" />
+    <Compile Include="Control\Control_Rette.cs" />
+    <Compile Include="Control\Control_RetteSoluzioni.cs" />
     <Compile Include="Control\Control_Solventi.cs" />
     <Compile Include="Control\Control_Soluzioni.cs" />
     <Compile Include="Control\Control_Solventi_Details.cs" />
@@ -65,10 +67,12 @@
     <Compile Include="Control\Control_Transcode.cs" />
     <Compile Include="Control\Control_Utenti.cs" />
     <Compile Include="Control\Control_WorkingSolution_Details.cs" />
+    <Compile Include="Model\Model_Rette.cs" />
     <Compile Include="Model\Model_Configurazione.cs" />
     <Compile Include="Model\Model_Documenti.cs" />
     <Compile Include="Model\Model_Materiale_Tipologia.cs" />
     <Compile Include="Model\Model_MaterialiMR.cs" />
+    <Compile Include="Model\Model_Rette_Soluzioni.cs" />
     <Compile Include="Model\Model_Solventi.cs" />
     <Compile Include="Model\Model_Soluzioni.cs" />
     <Compile Include="Model\Model_Solventi_Details.cs" />
@@ -82,27 +86,21 @@
     </Reference>
     <Reference Include="DevExpress.Data.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="DevExpress.XtraRichEdit.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
     <Reference Include="EPPlus">
       <HintPath>..\..\DLLs\EPPlus.dll</HintPath>
@@ -112,6 +110,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -551,13 +551,20 @@ namespace EOS.Core.Control
                 {
                     string SQLString = "";
 
-                    if (SoluzioneSolvente == "Soluzione")
+                    if (SoluzioneSolvente == "Retta")
                     {
-                        SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Soluzioni_Details where IDSoluzioneMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                        SQLString = SQLString + "select min(isnull(SOL.DataScadenza,'31/12/2999')) as DataScadenza from Rette_Soluzioni RETSOL inner join Soluzioni SOL ON RETSOL.IDSoluzione=SOL.IDSoluzione WHERE RETSOL.IDRetta={0} and isnull (DataScadenza,'31/12/2999')>getdate() ";
                     }
                     else
                     {
-                        SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Solventi_Details where IDSolventeMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                        if (SoluzioneSolvente == "Soluzione")
+                        {
+                            SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Soluzioni_Details where IDSoluzioneMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                        }
+                        else
+                        {
+                            SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Solventi_Details where IDSolventeMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                        }
                     }
 
                     SQLString = string.Format(SQLString, IDMaster);
@@ -609,28 +616,43 @@ namespace EOS.Core.Control
 
                     SqlCommand cmd;
 
-                    if (SoluzioneSolvente == "Soluzione")
+                    if (SoluzioneSolvente == "Retta")
                     {
                         if ((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
                         {
-                            cmd = new SqlCommand("Update Soluzioni set DataScadenza = NULL Where IDSoluzione = @ID ");
+                            cmd = new SqlCommand("Update Retta set DataScadenza = NULL Where IDRetta = @ID ");
                         }
                         else
                         {
-                            cmd = new SqlCommand("Update Soluzioni set DataScadenza = @DataScadenza Where IDSoluzione = @ID ");
+                            cmd = new SqlCommand("Update Retta set DataScadenza = @DataScadenza Where IDRetta = @ID ");
                         }
                     }
                     else
                     {
-                        if ((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
+                        if (SoluzioneSolvente == "Soluzione")
                         {
-                            cmd = new SqlCommand("Update Solventi set DataScadenza = NULL Where IDSolvente = @ID ");
+                            if ((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
+                            {
+                                cmd = new SqlCommand("Update Soluzioni set DataScadenza = NULL Where IDSoluzione = @ID ");
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand("Update Soluzioni set DataScadenza = @DataScadenza Where IDSoluzione = @ID ");
+                            }
                         }
                         else
                         {
-                            cmd = new SqlCommand("Update Solventi set DataScadenza = @DataScadenza Where IDSolvente = @ID ");
+                            if ((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
+                            {
+                                cmd = new SqlCommand("Update Solventi set DataScadenza = NULL Where IDSolvente = @ID ");
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand("Update Solventi set DataScadenza = @DataScadenza Where IDSolvente = @ID ");
+                            }
                         }
                     }
+                    
 
                     if((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
                     {
@@ -708,7 +730,14 @@ namespace EOS.Core.Control
             }
             else
             {
-                SQLString = "Select count(*) as NumeroComponenti from Solventi_Details WHERE IDSolventeMaster='" + ID + "' ";
+                if (SoluzioneSolvente == "Solvente")
+                {
+                    SQLString = "Select count(*) as NumeroComponenti from Solventi_Details WHERE IDSolventeMaster='" + ID + "' ";
+                }
+                else
+                {
+                    SQLString = "Select count(*) as NumeroComponenti from RetteSoluzioni WHERE IDRetta='" + ID + "' ";
+                }
             }    
 
             using (var cnn = new SqlConnection())
@@ -774,13 +803,20 @@ namespace EOS.Core.Control
             bool ret = false;
             string SQLString = "";
 
-            if (SoluzioneSolvente == "Soluzione")
+            if (SoluzioneSolvente == "Retta")
             {
-                SQLString = "select Soluzioni.Tipologia from Soluzioni where Soluzioni.IDSoluzione='" + ID + "' ";
+                SQLString = "select Rette.Tipologia from Rette where Rette.IDRette='" + ID + "' ";
             }
             else
             {
-                SQLString = "select Solventi.Tipologia from Solventi where Solventi.IDSolvente='" + ID + "' ";
+                if (SoluzioneSolvente == "Soluzione")
+                {
+                    SQLString = "select Soluzioni.Tipologia from Soluzioni where Soluzioni.IDSoluzione='" + ID + "' ";
+                }
+                else
+                {
+                    SQLString = "select Solventi.Tipologia from Solventi where Solventi.IDSolvente='" + ID + "' ";
+                }
             }
 
             using (var cnn = new SqlConnection())
@@ -799,9 +835,9 @@ namespace EOS.Core.Control
                     {
                         while (dr.Read())
                         {
-                            if (SoluzioneSolvente == "Soluzione")
+                            if (SoluzioneSolvente == "Retta")
                             {
-                                if(Convert.ToString(dr["Tipologia"])!="Soluzione MR Modello")
+                                if (Convert.ToString(dr["Tipologia"]) != "Retta di Taratura Modello")
                                 {
                                     ret = true;
                                 }
@@ -812,13 +848,27 @@ namespace EOS.Core.Control
                             }
                             else
                             {
-                                if (Convert.ToString(dr["Tipologia"]) != "Soluzione di Lavoro Modello")
+                                if (SoluzioneSolvente == "Soluzione")
                                 {
-                                    ret = true;
+                                    if (Convert.ToString(dr["Tipologia"]) != "Soluzione MR Modello")
+                                    {
+                                        ret = true;
+                                    }
+                                    else
+                                    {
+                                        ret = false;
+                                    }
                                 }
                                 else
                                 {
-                                    ret = false;
+                                    if (Convert.ToString(dr["Tipologia"]) != "Soluzione di Lavoro Modello")
+                                    {
+                                        ret = true;
+                                    }
+                                    else
+                                    {
+                                        ret = false;
+                                    }
                                 }
                             }
                         }

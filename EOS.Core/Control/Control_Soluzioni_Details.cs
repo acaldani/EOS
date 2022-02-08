@@ -192,6 +192,8 @@ namespace EOS.Core.Control
                 ModelSoluzioni = ControlSoluzioni.GetSolutionByID(SoluzioneDetail.IDSoluzioneMaster).First().Value;
                 ControlCalcolo.SetDataScadenza(ModelSoluzioni.IDSoluzione, ModelSoluzioni.DefaultGiorniScadenza, ModelSoluzioni.DataPreparazione, "Soluzione");
 
+                ControlSoluzioni.AddLogSoluzione("Aggiornamento", ModelSoluzioni, ModelSoluzioni.DataPreparazione.ToString(), ModelSoluzioni.DataScadenza.ToString(), ModelSoluzioni.DataCreazione.ToString());
+
                 ControlCalcolo = null;
                 ControlSoluzioni = null;
                 ModelSoluzioni = null;

@@ -109,6 +109,39 @@ namespace EOS.Core.Control
             return ret;
         }
 
+        //IDRetta
+        public string GetCodiceRettaByID(int ID)
+        {
+            string ret = "";
+            string SQLString = "";
+
+            SQLString = "Select CodiceRetta from Rette WHERE IDRetta='" + ID + "' ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.Connection = cnn;
+                    cmd.CommandText = SQLString;
+
+                    var dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            ret = dr["CodiceRetta"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         //IDSolvente
         public string GetCodiceSolventeByID(int ID)
         {
