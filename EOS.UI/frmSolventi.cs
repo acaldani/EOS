@@ -918,16 +918,26 @@ namespace EOS.UI
 
                 if (ret1 == 1)
                 {
-                    EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
-                    ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                    EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
-                    ModelSolventi = ControlSolventi.GetSolventeByID(IDSolvente).First().Value;
-                    ModelSolventi.DataScadenza = Convert.ToDateTime(null);
-                    ControlSolventi.IDUtente = IDUtente;
-                    ControlSolventi.UpdateSolvente(ModelSolventi,0);
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolventedetail
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
+                    //ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                    //EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
+                    //ModelSolventi = ControlSolventi.GetSolventeByID(IDSolvente).First().Value;
+                    //ModelSolventi.DataScadenza = Convert.ToDateTime(null);
+                    //ControlSolventi.IDUtente = IDUtente;
+                    //ControlSolventi.UpdateSolvente(ModelSolventi,0);
 
-                    ModelSolventi = null;
-                    ControlSolventi = null;
+                    //ModelSolventi = null;
+                    //ControlSolventi = null;
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolventedetail
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                     XtraMessageBox.Show("Dati cancellati.", "Cancella", MessageBoxButtons.OK);
                 }

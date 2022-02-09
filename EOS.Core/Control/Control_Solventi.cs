@@ -236,6 +236,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
                 EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
                 ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();

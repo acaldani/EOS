@@ -37,6 +37,7 @@ namespace EOS.Core.Control
     {
         
         public string ConnectionString;
+        public int IDUtente=0;
 
         public List<String> GetCASbyIDSolution(int IDSoluzione)
         {
@@ -546,6 +547,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
 
                 if (ControlCalcolo.CountComponent(IDMaster, SoluzioneSolvente) > 0)
                 {
@@ -682,11 +684,12 @@ namespace EOS.Core.Control
 
                 Core.Control.Control_Soluzioni_Details_Concentration ControlSoluzioniDetailsConcentration = new Core.Control.Control_Soluzioni_Details_Concentration();
                 ControlSoluzioniDetailsConcentration.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlSoluzioniDetailsConcentration.IDUtente = IDUtente;
                 ret = ControlSoluzioniDetailsConcentration.DeleteSolutionDetailsConcentrationByIDSoluzione(IDSoluzioneToCalculate);
 
                 Core.Control.Control_Calcolo ControlCalcolo = new Core.Control.Control_Calcolo();
-
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
 
                 foreach (string CASCode in ControlCalcolo.GetCASbyIDSolution(IDSoluzioneToCalculate))
                 {

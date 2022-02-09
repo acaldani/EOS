@@ -20,6 +20,8 @@ namespace EOS.Core.Control
     {
 
         public string ConnectionString;
+        public int IDUtente = 0;
+
         public IDictionary<int, EOS.Core.Model.Model_Soluzioni_Details_Concentration> GetByIDSolutionDetailConcentration(int IDSoluzioneDetail)
         {
             string SQLString = string.Format("SELECT * FROM Soluzioni_Details_Concentration WHERE IDSoluzioneDetailConcentration={0}", IDSoluzioneDetail);
@@ -41,6 +43,7 @@ namespace EOS.Core.Control
         public int AddSolutionDetailConcentration(EOS.Core.Model.Model_Soluzioni_Details_Concentration SoluzioneDetailConcentration)
         {
             int newid = 0;
+            string DataCalcolo="";
             try
             {
                 System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection();
@@ -59,16 +62,27 @@ namespace EOS.Core.Control
                 SQLString = SQLString + "           ('{0}' ";
                 SQLString = SQLString + "           ,'{1}' ";
                 SQLString = SQLString + "           ,{2} ";
-                SQLString = SQLString + "           ,'{3}') ";
+                SQLString = SQLString + "           ,'{3}'); SELECT SCOPE_IDENTITY() ";
+
+                if ((SoluzioneDetailConcentration.DataCalcolo != null) && (SoluzioneDetailConcentration.DataCalcolo != Convert.ToDateTime("01/01/0001 00:00:00")))
+                {
+                    DataCalcolo = SoluzioneDetailConcentration.DataCalcolo.ToString();
+                }
+                else
+                {
+                    DataCalcolo = "01/01/0001 00:00:00";
+                }
 
                 SQLString = string.Format(SQLString, SoluzioneDetailConcentration.IDSoluzioneMaster, SoluzioneDetailConcentration.CAS.Replace("'", "''"), SoluzioneDetailConcentration.ConcentrazioneFinale.ToString().Replace(",","."), SoluzioneDetailConcentration.DataCalcolo.ToString());
 
                 cmd.CommandText = SQLString;
                 cmd.Connection = cnn;
-                newid = cmd.ExecuteNonQuery();
+                newid = Convert.ToInt32(cmd.ExecuteScalar());
 
                 cmd = null;
                 cnn = null;
+
+                AddLogSoluzioneDettaglioConcentrazione("Inserimento", SoluzioneDetailConcentration, DataCalcolo, newid);
 
                 return newid;
             }
@@ -78,32 +92,41 @@ namespace EOS.Core.Control
             }
         }
 
-        public int UpdateSolutionDetail(EOS.Core.Model.Model_Soluzioni_Details_Concentration SoluzioneDetailConcentration)
+        public int AddLogSoluzioneDettaglioConcentrazione(string TipoOperazione, Model_Soluzioni_Details_Concentration SoluzioneDetailConcentration, string DataCalcolo, int newid = 0, Model_Soluzioni_Details_Concentration SoluzioneDetailOriginale = null)
         {
             try
             {
-                System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection();
-                cnn.ConnectionString = ConnectionString;
-                cnn.Open();
+                Control_Transcode ctlTranscode = new Control_Transcode();
+                Control_Log ctlLog = new Control_Log();
 
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+                string SQLStringLog = "";
 
-                string SQLString = "";
-                SQLString = SQLString + "UPDATE [dbo].[Soluzioni_Details_Concentration] ";
-                SQLString = SQLString + "   SET [IDSoluzioneMaster] = '{0}' ";
-                SQLString = SQLString + "      ,[CAS] = '{1}' ";
-                SQLString = SQLString + "      ,[ConcentrazioneFinale] = {2} ";
-                SQLString = SQLString + "      ,[DataCalcolo] = '{3}' ";
-                SQLString = SQLString + " WHERE  IDSoluzioneDetail={4} ";
+                if (TipoOperazione == "Cancellazione")
+                {
+                    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailConcentration.IDSoluzioneMaster) + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "Cancellazione di tutte le concentrazioni calcolate precedentemente per ricalcolo. " + System.Environment.NewLine;
+                }
+                else
+                {
+                    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailConcentration.IDSoluzioneMaster) + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "CAS = " + SoluzioneDetailConcentration.CAS + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "Concentrazione Finale = " + SoluzioneDetailConcentration.ConcentrazioneFinale + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "Data Calcolo = " + DataCalcolo + System.Environment.NewLine;
+                }
 
-                SQLString = string.Format(SQLString, SoluzioneDetailConcentration.IDSoluzioneMaster, SoluzioneDetailConcentration.CAS.Replace("'", "''"), SoluzioneDetailConcentration.ConcentrazioneFinale, SoluzioneDetailConcentration.DataCalcolo, SoluzioneDetailConcentration.IDSoluzioneDetailConcentration);
+                ctlLog.ConnectionString = ConnectionString;
 
-                cmd.CommandText = SQLString;
-                cmd.Connection = cnn;
-                cmd.ExecuteNonQuery();
+                if (newid != 0)
+                {
+                    ctlLog.InsertLog(TipoOperazione, "Soluzioni MR Dettaglio Concentrazioni", newid, ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailConcentration.IDSoluzioneMaster), SQLStringLog, IDUtente);
+                }
+                else
+                {
+                    ctlLog.InsertLog(TipoOperazione, "Soluzioni MR Dettaglio Concentrazioni", 0, ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetailConcentration.IDSoluzioneMaster), SQLStringLog, IDUtente);
+                }
 
-                cmd = null;
-                cnn = null;
+                ctlTranscode = null;
+                ctlLog = null;
 
                 return 1;
             }
@@ -112,11 +135,51 @@ namespace EOS.Core.Control
                 return 0;
             }
         }
+        //public int UpdateSolutionDetail(EOS.Core.Model.Model_Soluzioni_Details_Concentration SoluzioneDetailConcentration)
+        //{
+        //    try
+        //    {
+        //        System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection();
+        //        cnn.ConnectionString = ConnectionString;
+        //        cnn.Open();
+
+        //        System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+
+        //        string SQLString = "";
+        //        SQLString = SQLString + "UPDATE [dbo].[Soluzioni_Details_Concentration] ";
+        //        SQLString = SQLString + "   SET [IDSoluzioneMaster] = '{0}' ";
+        //        SQLString = SQLString + "      ,[CAS] = '{1}' ";
+        //        SQLString = SQLString + "      ,[ConcentrazioneFinale] = {2} ";
+        //        SQLString = SQLString + "      ,[DataCalcolo] = '{3}' ";
+        //        SQLString = SQLString + " WHERE  IDSoluzioneDetail={4} ";
+
+        //        SQLString = string.Format(SQLString, SoluzioneDetailConcentration.IDSoluzioneMaster, SoluzioneDetailConcentration.CAS.Replace("'", "''"), SoluzioneDetailConcentration.ConcentrazioneFinale, SoluzioneDetailConcentration.DataCalcolo, SoluzioneDetailConcentration.IDSoluzioneDetailConcentration);
+
+        //        cmd.CommandText = SQLString;
+        //        cmd.Connection = cnn;
+        //        cmd.ExecuteNonQuery();
+
+        //        cmd = null;
+        //        cnn = null;
+
+        //        return 1;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return 0;
+        //    }
+        //}
 
         public int DeleteSolutionDetailsConcentrationByIDSoluzione(int IDSoluzione)
         {
             try
             {
+                Model_Soluzioni_Details_Concentration ModelSoluzioneDetailConcentration=new Model_Soluzioni_Details_Concentration();
+                Control_Soluzioni_Details_Concentration ControlSoluzioneDetailConcentration = new Control_Soluzioni_Details_Concentration();
+                ControlSoluzioneDetailConcentration.ConnectionString = ConnectionString;
+                ControlSoluzioneDetailConcentration.IDUtente = IDUtente;
+                ModelSoluzioneDetailConcentration = ControlSoluzioneDetailConcentration.GetByIDSolution(IDSoluzione).First().Value;
+
                 System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection();
                 cnn.ConnectionString = ConnectionString;
                 cnn.Open();
@@ -130,6 +193,8 @@ namespace EOS.Core.Control
                 cmd.CommandText = SQLString;
                 cmd.Connection = cnn;
                 cmd.ExecuteNonQuery();
+
+                AddLogSoluzioneDettaglioConcentrazione("Cancellazione", ModelSoluzioneDetailConcentration, "");
 
                 cmd = null;
                 cnn = null;

@@ -1333,22 +1333,46 @@ namespace EOS.UI
                     ret1 = ControlSolutionDetail.DeleteSolutionDetail(Convert.ToInt32(gviewSoluzioniDetails.GetRowCellValue(rowHandle, "IDSoluzioneDetail")));
                 }
 
-                Core.Control.Control_Soluzioni_Details_Concentration ControlSoluzioniDetailsConcentration = new Core.Control.Control_Soluzioni_Details_Concentration();
-                ControlSoluzioniDetailsConcentration.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                ret2 = ControlSoluzioniDetailsConcentration.DeleteSolutionDetailsConcentrationByIDSoluzione(IDSoluzione);
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolutiondetail
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //Core.Control.Control_Soluzioni_Details_Concentration ControlSoluzioniDetailsConcentration = new Core.Control.Control_Soluzioni_Details_Concentration();
+                //ControlSoluzioniDetailsConcentration.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                //ControlSoluzioniDetailsConcentration.IDUtente = IDUtente;
+                //ret2 = ControlSoluzioniDetailsConcentration.DeleteSolutionDetailsConcentrationByIDSoluzione(IDSoluzione);
 
-                if ((ret1 == 1) && (ret2 == 1))
+                //if ((ret1 == 1) && (ret2 == 1))
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolutiondetail
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                if (ret1 == 1)
                 {
-                    EOS.Core.Control.Controller_Soluzioni ControllerSoluzioni = new Core.Control.Controller_Soluzioni();
-                    ControllerSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                    EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
-                    ModelSoluzioni = ControllerSoluzioni.GetSolutionByID(IDSoluzione).First().Value;
-                    ModelSoluzioni.DataScadenza = Convert.ToDateTime(null);
-                    ControllerSoluzioni.IDUtente = IDUtente;
-                    ControllerSoluzioni.UpdateSolution(ModelSoluzioni,0);
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolutiondetail
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //EOS.Core.Control.Controller_Soluzioni ControllerSoluzioni = new Core.Control.Controller_Soluzioni();
+                    //ControllerSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                    //EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
+                    //ModelSoluzioni = ControllerSoluzioni.GetSolutionByID(IDSoluzione).First().Value;
+                    //ModelSoluzioni.DataScadenza = Convert.ToDateTime(null);
+                    //ControllerSoluzioni.IDUtente = IDUtente;
+                    //ControllerSoluzioni.UpdateSolution(ModelSoluzioni,0);
 
-                    ModelSoluzioni = null;
-                    ControllerSoluzioni = null;
+                    //ModelSoluzioni = null;
+                    //ControllerSoluzioni = null;
+                    //ControlSoluzioniDetailsConcentration = null;
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///Commentato, era in uso ma non era utile in quanto queste operazioni si svolgono già prima nell'deletesolutiondetail
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                     XtraMessageBox.Show("Dati cancellati.", "Cancella", MessageBoxButtons.OK);
                 }
@@ -1359,8 +1383,7 @@ namespace EOS.UI
 
                 ModelSolutionDetail = null;
                 ControlSolutionDetail = null;
-                ControlSoluzioniDetailsConcentration = null;
-
+                
                 IDSoluzioneCalled = IDSoluzione;
 
                 LoadData();

@@ -315,6 +315,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
 
                 //adattare count component
                 if (ControlCalcolo.CountComponent(Retta.IDRetta, "Retta") > 0)

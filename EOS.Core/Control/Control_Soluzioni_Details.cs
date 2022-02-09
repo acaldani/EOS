@@ -106,6 +106,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
                 EOS.Core.Control.Controller_Soluzioni ControlSoluzioni = new EOS.Core.Control.Controller_Soluzioni();
                 ControlSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new EOS.Core.Model.Model_Soluzioni();
@@ -184,6 +185,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
                 EOS.Core.Control.Controller_Soluzioni ControlSoluzioni = new EOS.Core.Control.Controller_Soluzioni();
                 ControlSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new EOS.Core.Model.Model_Soluzioni();
@@ -217,7 +219,7 @@ namespace EOS.Core.Control
 
                 if (TipoOperazione == "Cancellazione")
                 {
-                    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
                     SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
                     SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
                 }
@@ -225,7 +227,7 @@ namespace EOS.Core.Control
                 {
                     if (TipoOperazione == "Inserimento")
                     {
-                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "Identificativo - LottoMateriale (Componente) = " + ctlTranscode.GetIdentificativoELottoByID(SoluzioneDetail.IDSchedaDocumenti) + System.Environment.NewLine;
                         SQLStringLog = SQLStringLog + "TipologiaMR = " + ctlTranscode.GetTipologiaMRByID(SoluzioneDetail.Tipologia_MR) + System.Environment.NewLine;
@@ -242,7 +244,7 @@ namespace EOS.Core.Control
                     }
                     else
                     {
-                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSolventeByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
+                        SQLStringLog = SQLStringLog + "CodiceSoluzioneMR = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzioneMaster) + System.Environment.NewLine;
 
                         SQLStringLog = SQLStringLog + "CodiceSoluzioneMR (Componente) = " + ctlTranscode.GetCodiceSoluzioneByID(SoluzioneDetail.IDSoluzione) + System.Environment.NewLine;
 
@@ -367,6 +369,7 @@ namespace EOS.Core.Control
 
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                ControlCalcolo.IDUtente = IDUtente;
                 EOS.Core.Control.Controller_Soluzioni ControlSoluzioni = new Core.Control.Controller_Soluzioni();
                 ControlSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new Core.Model.Model_Soluzioni();
