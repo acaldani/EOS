@@ -212,6 +212,12 @@
     <Compile Include="frmPrintSelect.Designer.cs">
       <DependentUpon>frmPrintSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRetta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetta.Designer.cs">
+      <DependentUpon>frmRetta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSolventi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrintSelect.resx">
       <DependentUpon>frmPrintSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetta.resx">
+      <DependentUpon>frmRetta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSolventi.resx">
       <DependentUpon>frmSolventi.cs</DependentUpon>
