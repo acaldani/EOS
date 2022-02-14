@@ -1770,22 +1770,6 @@ namespace EOS.UI
             //addgridhandler();
         }
 
-        //private void gridSoluzioni_ColumnFilterChanged(object sender, EventArgs e)
-        //{
-        //    DevExpress.XtraGrid.Views.Grid.GridView view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
-        //    if(view.ActiveFilterString!="" && activeFilterTrafficLight == false)
-        //    {
-        //        activeFilter = view.ActiveFilterString;
-
-        //        activeFilterTrafficLight = false;
-        //    }
-
-        //    view.ClearSelection();
-        //    view.TopRowIndex = 0;
-        //    view.FocusedRowHandle = 0;
-        //    view.FocusedColumn = view.VisibleColumns[0];
-        //}
-
         private void gridDocumenti_DoubleClick(object sender, EventArgs e)
         {
             object cellValue = gviewDocumenti.GetRowCellValue(gviewDocumenti.FocusedRowHandle, "PathDocumento");
@@ -1898,6 +1882,7 @@ namespace EOS.UI
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             int Copie = 0;
+            string Report = "";
             string Stampante = "";
 
             //int intref = 0;
@@ -1942,10 +1927,12 @@ namespace EOS.UI
             //}
 
             frmPrintSelect PrintSelect = new frmPrintSelect();
+            PrintSelect.Form = "frmSoluzioni";
             PrintSelect.ShowDialog();
 
             Copie = PrintSelect.Copie;
             Stampante = PrintSelect.Stampante;
+            Report = PrintSelect.Report;
 
             if(Stampante!="")
             {
@@ -1954,7 +1941,7 @@ namespace EOS.UI
                 for (int c = 0; c < gviewSoluzioni.SelectedRowsCount; c++)
                 {
                     XtraReport myReport = new XtraReport();
-                    myReport = XtraReport.FromFile(@"\\server024\apps\EOS\Documenti\Reports\EtichettaSoluzione68x25.repx");
+                    myReport = XtraReport.FromFile(Report);
 
                     myReport.Parameters["parCodiceSoluzione"].Value = gviewSoluzioni.GetRowCellValue(rowHandles[c], "CodiceSoluzione").ToString();
                     myReport.Parameters["parTipoSoluzione"].Value = "MR";

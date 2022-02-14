@@ -50,17 +50,27 @@ namespace EOS.UI
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtCodiceRetta = new DevExpress.XtraEditors.TextEdit();
             this.cboTipologia = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.retteTipologiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.soluzioni = new EOS.UI.Soluzioni();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtNome = new DevExpress.XtraEditors.TextEdit();
             this.txtGiorniScadenza = new DevExpress.XtraEditors.TextEdit();
             this.txtDataScadenza = new DevExpress.XtraEditors.TextEdit();
             this.cboSingoloSolvente = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.materialiLottiSelectCommandBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lupin = new EOS.UI.Lupin();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cboMiscelaSolventi = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.solventiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.solventi = new EOS.UI.Solventi();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtNote = new DevExpress.XtraEditors.TextEdit();
             this.txtDataCreazione = new DevExpress.XtraEditors.DateEdit();
             this.cboUtenteCreazione = new DevExpress.XtraEditors.LookUpEdit();
+            this.loginUtentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboStato = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.compostiStatiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -74,15 +84,20 @@ namespace EOS.UI
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cboStato = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.soluzioniTipologiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridRetteDettaglio = new DevExpress.XtraGrid.GridControl();
+            this.gviewRetteDettaglio = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.butAggiungiComponente = new DevExpress.XtraEditors.SimpleButton();
             this.butCancella = new DevExpress.XtraEditors.SimpleButton();
             this.butModifica = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.butClose = new DevExpress.XtraEditors.SimpleButton();
+            this.soluzioni_TipologiaTableAdapter = new EOS.UI.SoluzioniTableAdapters.Soluzioni_TipologiaTableAdapter();
+            this.materialiLottiSelectCommandTableAdapter = new EOS.UI.LupinTableAdapters.MaterialiLottiSelectCommandTableAdapter();
+            this.solventiTableAdapter = new EOS.UI.SolventiTableAdapters.SolventiTableAdapter();
+            this.composti_StatiTableAdapter = new EOS.UI.SoluzioniTableAdapters.Composti_StatiTableAdapter();
+            this.login_UtentiTableAdapter = new EOS.UI.SoluzioniTableAdapters.Login_UtentiTableAdapter();
+            this.rette_TipologiaTableAdapter = new EOS.UI.SoluzioniTableAdapters.Rette_TipologiaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRette)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gviewRette)).BeginInit();
@@ -90,18 +105,28 @@ namespace EOS.UI
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodiceRetta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipologia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.retteTipologiaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiorniScadenza.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataScadenza.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSingoloSolvente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialiLottiSelectCommandBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMiscelaSolventi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataCreazione.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataCreazione.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUtenteCreazione.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginUtentiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStato.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compostiStatiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -115,10 +140,9 @@ namespace EOS.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStato.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDettaglio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDettaglio)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -266,6 +290,7 @@ namespace EOS.UI
             this.gviewRette.GridControl = this.gridRette;
             this.gviewRette.Name = "gviewRette";
             this.gviewRette.OptionsView.ShowGroupPanel = false;
+            this.gviewRette.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gviewRette_FocusedRowChanged);
             // 
             // layoutControl1
             // 
@@ -304,12 +329,25 @@ namespace EOS.UI
             this.cboTipologia.Name = "cboTipologia";
             this.cboTipologia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboTipologia.Properties.DataSource = this.retteTipologiaBindingSource;
+            this.cboTipologia.Properties.DisplayMember = "DescrizioneTipologia";
             this.cboTipologia.Properties.NullText = "";
             this.cboTipologia.Properties.PopupSizeable = false;
             this.cboTipologia.Properties.PopupView = this.gridLookUpEdit1View;
+            this.cboTipologia.Properties.ValueMember = "ID";
             this.cboTipologia.Size = new System.Drawing.Size(497, 20);
             this.cboTipologia.StyleController = this.layoutControl1;
             this.cboTipologia.TabIndex = 5;
+            // 
+            // retteTipologiaBindingSource
+            // 
+            this.retteTipologiaBindingSource.DataMember = "Rette_Tipologia";
+            this.retteTipologiaBindingSource.DataSource = this.soluzioni;
+            // 
+            // soluzioni
+            // 
+            this.soluzioni.DataSetName = "Soluzioni";
+            this.soluzioni.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridLookUpEdit1View
             // 
@@ -352,12 +390,25 @@ namespace EOS.UI
             this.cboSingoloSolvente.Name = "cboSingoloSolvente";
             this.cboSingoloSolvente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSingoloSolvente.Properties.DataSource = this.materialiLottiSelectCommandBindingSource;
+            this.cboSingoloSolvente.Properties.DisplayMember = "DenominazioneMateriale";
             this.cboSingoloSolvente.Properties.NullText = "";
             this.cboSingoloSolvente.Properties.PopupSizeable = false;
             this.cboSingoloSolvente.Properties.PopupView = this.gridView1;
+            this.cboSingoloSolvente.Properties.ValueMember = "IDSchedaDocumenti";
             this.cboSingoloSolvente.Size = new System.Drawing.Size(498, 20);
             this.cboSingoloSolvente.StyleController = this.layoutControl1;
             this.cboSingoloSolvente.TabIndex = 9;
+            // 
+            // materialiLottiSelectCommandBindingSource
+            // 
+            this.materialiLottiSelectCommandBindingSource.DataMember = "MaterialiLottiSelectCommand";
+            this.materialiLottiSelectCommandBindingSource.DataSource = this.lupin;
+            // 
+            // lupin
+            // 
+            this.lupin.DataSetName = "Lupin";
+            this.lupin.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridView1
             // 
@@ -373,12 +424,25 @@ namespace EOS.UI
             this.cboMiscelaSolventi.Name = "cboMiscelaSolventi";
             this.cboMiscelaSolventi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboMiscelaSolventi.Properties.DataSource = this.solventiBindingSource;
+            this.cboMiscelaSolventi.Properties.DisplayMember = "Nome";
             this.cboMiscelaSolventi.Properties.NullText = "";
             this.cboMiscelaSolventi.Properties.PopupSizeable = false;
             this.cboMiscelaSolventi.Properties.PopupView = this.gridView2;
+            this.cboMiscelaSolventi.Properties.ValueMember = "IDSolvente";
             this.cboMiscelaSolventi.Size = new System.Drawing.Size(499, 20);
             this.cboMiscelaSolventi.StyleController = this.layoutControl1;
             this.cboMiscelaSolventi.TabIndex = 10;
+            // 
+            // solventiBindingSource
+            // 
+            this.solventiBindingSource.DataMember = "Solventi";
+            this.solventiBindingSource.DataSource = this.solventi;
+            // 
+            // solventi
+            // 
+            this.solventi.DataSetName = "Solventi";
+            this.solventi.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridView2
             // 
@@ -417,11 +481,48 @@ namespace EOS.UI
             this.cboUtenteCreazione.Name = "cboUtenteCreazione";
             this.cboUtenteCreazione.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboUtenteCreazione.Properties.DataSource = this.loginUtentiBindingSource;
+            this.cboUtenteCreazione.Properties.DisplayMember = "NomeUtente";
             this.cboUtenteCreazione.Properties.NullText = "";
             this.cboUtenteCreazione.Properties.PopupSizeable = false;
+            this.cboUtenteCreazione.Properties.ValueMember = "IDUtente";
             this.cboUtenteCreazione.Size = new System.Drawing.Size(499, 20);
             this.cboUtenteCreazione.StyleController = this.layoutControl1;
             this.cboUtenteCreazione.TabIndex = 14;
+            // 
+            // loginUtentiBindingSource
+            // 
+            this.loginUtentiBindingSource.DataMember = "Login_Utenti";
+            this.loginUtentiBindingSource.DataSource = this.soluzioni;
+            // 
+            // cboStato
+            // 
+            this.cboStato.Location = new System.Drawing.Point(138, 108);
+            this.cboStato.MenuManager = this.barManager1;
+            this.cboStato.Name = "cboStato";
+            this.cboStato.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboStato.Properties.DataSource = this.compostiStatiBindingSource;
+            this.cboStato.Properties.DisplayMember = "Nome";
+            this.cboStato.Properties.NullText = "";
+            this.cboStato.Properties.PopupSizeable = false;
+            this.cboStato.Properties.PopupView = this.gridView3;
+            this.cboStato.Properties.ValueMember = "ID";
+            this.cboStato.Size = new System.Drawing.Size(498, 20);
+            this.cboStato.StyleController = this.layoutControl1;
+            this.cboStato.TabIndex = 11;
+            // 
+            // compostiStatiBindingSource
+            // 
+            this.compostiStatiBindingSource.DataMember = "Composti_Stati";
+            this.compostiStatiBindingSource.DataSource = this.soluzioni;
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
             // Root
             // 
@@ -553,42 +654,27 @@ namespace EOS.UI
             this.layoutControlItem11.Text = "Utente Creazione";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(122, 13);
             // 
-            // cboStato
+            // soluzioniTipologiaBindingSource
             // 
-            this.cboStato.Location = new System.Drawing.Point(138, 108);
-            this.cboStato.MenuManager = this.barManager1;
-            this.cboStato.Name = "cboStato";
-            this.cboStato.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboStato.Properties.NullText = "";
-            this.cboStato.Properties.PopupSizeable = false;
-            this.cboStato.Properties.PopupView = this.gridView3;
-            this.cboStato.Size = new System.Drawing.Size(498, 20);
-            this.cboStato.StyleController = this.layoutControl1;
-            this.cboStato.TabIndex = 11;
+            this.soluzioniTipologiaBindingSource.DataMember = "Soluzioni_Tipologia";
+            this.soluzioniTipologiaBindingSource.DataSource = this.soluzioni;
             // 
-            // gridView3
+            // gridRetteDettaglio
             // 
-            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridRetteDettaglio.Location = new System.Drawing.Point(12, 531);
+            this.gridRetteDettaglio.MainView = this.gviewRetteDettaglio;
+            this.gridRetteDettaglio.MenuManager = this.barManager1;
+            this.gridRetteDettaglio.Name = "gridRetteDettaglio";
+            this.gridRetteDettaglio.Size = new System.Drawing.Size(1277, 300);
+            this.gridRetteDettaglio.TabIndex = 10;
+            this.gridRetteDettaglio.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gviewRetteDettaglio});
             // 
-            // gridControl1
+            // gviewRetteDettaglio
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 531);
-            this.gridControl1.MainView = this.gridView4;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1277, 300);
-            this.gridControl1.TabIndex = 10;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView4});
-            // 
-            // gridView4
-            // 
-            this.gridView4.GridControl = this.gridControl1;
-            this.gridView4.Name = "gridView4";
+            this.gviewRetteDettaglio.GridControl = this.gridRetteDettaglio;
+            this.gviewRetteDettaglio.Name = "gviewRetteDettaglio";
+            this.gviewRetteDettaglio.OptionsView.ShowGroupPanel = false;
             // 
             // butAggiungiComponente
             // 
@@ -622,26 +708,50 @@ namespace EOS.UI
             this.simpleButton1.TabIndex = 36;
             this.simpleButton1.Text = "Scollega e Annulla Punto/Soluzione";
             // 
-            // simpleButton2
+            // butClose
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(1095, 879);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(195, 22);
-            this.simpleButton2.TabIndex = 37;
-            this.simpleButton2.Text = "Chiudi";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.butClose.Location = new System.Drawing.Point(1095, 879);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(195, 22);
+            this.butClose.TabIndex = 37;
+            this.butClose.Text = "Chiudi";
+            this.butClose.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // soluzioni_TipologiaTableAdapter
+            // 
+            this.soluzioni_TipologiaTableAdapter.ClearBeforeFill = true;
+            // 
+            // materialiLottiSelectCommandTableAdapter
+            // 
+            this.materialiLottiSelectCommandTableAdapter.ClearBeforeFill = true;
+            // 
+            // solventiTableAdapter
+            // 
+            this.solventiTableAdapter.ClearBeforeFill = true;
+            // 
+            // composti_StatiTableAdapter
+            // 
+            this.composti_StatiTableAdapter.ClearBeforeFill = true;
+            // 
+            // login_UtentiTableAdapter
+            // 
+            this.login_UtentiTableAdapter.ClearBeforeFill = true;
+            // 
+            // rette_TipologiaTableAdapter
+            // 
+            this.rette_TipologiaTableAdapter.ClearBeforeFill = true;
             // 
             // frmRetta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1302, 913);
-            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.butClose);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.butAggiungiComponente);
             this.Controls.Add(this.butCancella);
             this.Controls.Add(this.butModifica);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gridRetteDettaglio);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.gridRette);
             this.Controls.Add(this.barDockControlLeft);
@@ -650,6 +760,8 @@ namespace EOS.UI
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmRetta";
             this.Text = "Rette di Taratura";
+            this.Load += new System.EventHandler(this.frmRetta_Load);
+            this.Shown += new System.EventHandler(this.frmRetta_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRette)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gviewRette)).EndInit();
@@ -657,18 +769,28 @@ namespace EOS.UI
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtCodiceRetta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipologia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.retteTipologiaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiorniScadenza.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataScadenza.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSingoloSolvente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialiLottiSelectCommandBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMiscelaSolventi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataCreazione.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataCreazione.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUtenteCreazione.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginUtentiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStato.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compostiStatiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
@@ -682,10 +804,9 @@ namespace EOS.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStato.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDettaglio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDettaglio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -739,12 +860,27 @@ namespace EOS.UI
         private DevExpress.XtraEditors.LookUpEdit cboUtenteCreazione;
         private DevExpress.XtraEditors.GridLookUpEdit cboStato;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.GridControl gridRetteDettaglio;
+        private DevExpress.XtraGrid.Views.Grid.GridView gviewRetteDettaglio;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton butAggiungiComponente;
         private DevExpress.XtraEditors.SimpleButton butCancella;
         private DevExpress.XtraEditors.SimpleButton butModifica;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton butClose;
+        private Soluzioni soluzioni;
+        private System.Windows.Forms.BindingSource soluzioniTipologiaBindingSource;
+        private SoluzioniTableAdapters.Soluzioni_TipologiaTableAdapter soluzioni_TipologiaTableAdapter;
+        private Lupin lupin;
+        private System.Windows.Forms.BindingSource materialiLottiSelectCommandBindingSource;
+        private LupinTableAdapters.MaterialiLottiSelectCommandTableAdapter materialiLottiSelectCommandTableAdapter;
+        private Solventi solventi;
+        private System.Windows.Forms.BindingSource solventiBindingSource;
+        private SolventiTableAdapters.SolventiTableAdapter solventiTableAdapter;
+        private System.Windows.Forms.BindingSource compostiStatiBindingSource;
+        private SoluzioniTableAdapters.Composti_StatiTableAdapter composti_StatiTableAdapter;
+        private System.Windows.Forms.BindingSource loginUtentiBindingSource;
+        private SoluzioniTableAdapters.Login_UtentiTableAdapter login_UtentiTableAdapter;
+        private System.Windows.Forms.BindingSource retteTipologiaBindingSource;
+        private SoluzioniTableAdapters.Rette_TipologiaTableAdapter rette_TipologiaTableAdapter;
     }
 }

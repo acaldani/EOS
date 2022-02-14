@@ -37,6 +37,7 @@ namespace EOS.UI
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sOLUZIONIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sOLVENTIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rETTEDITARATURAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -52,7 +53,8 @@ namespace EOS.UI
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sOLUZIONIToolStripMenuItem,
-            this.sOLVENTIToolStripMenuItem});
+            this.sOLVENTIToolStripMenuItem,
+            this.rETTEDITARATURAToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(147, 450);
@@ -72,6 +74,14 @@ namespace EOS.UI
             this.sOLVENTIToolStripMenuItem.Size = new System.Drawing.Size(134, 19);
             this.sOLVENTIToolStripMenuItem.Text = "SOLUZIONI DI LAVORO";
             this.sOLVENTIToolStripMenuItem.Click += new System.EventHandler(this.sOLVENTIToolStripMenuItem_Click);
+            // 
+            // rETTEDITARATURAToolStripMenuItem
+            // 
+            this.rETTEDITARATURAToolStripMenuItem.Name = "rETTEDITARATURAToolStripMenuItem";
+            this.rETTEDITARATURAToolStripMenuItem.Size = new System.Drawing.Size(134, 19);
+            this.rETTEDITARATURAToolStripMenuItem.Text = "RETTE DI TARATURA";
+            this.rETTEDITARATURAToolStripMenuItem.Visible = false;
+            this.rETTEDITARATURAToolStripMenuItem.Click += new System.EventHandler(this.rETTEDITARATURAToolStripMenuItem_Click);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -105,5 +115,6 @@ namespace EOS.UI
         private System.Windows.Forms.ToolStripMenuItem sOLUZIONIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sOLVENTIToolStripMenuItem;
         private XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private System.Windows.Forms.ToolStripMenuItem rETTEDITARATURAToolStripMenuItem;
     }
 }

@@ -36,5 +36,13 @@ namespace EOS.UI
             childSolventi.IDUtente = IDUtente;
             childSolventi.Show();
         }
+
+        private void rETTEDITARATURAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRetta childRetta = new frmRetta();
+            childRetta.MdiParent = this;
+            childRetta.IDUtente = IDUtente;
+            childRetta.Show();
+        }
     }
 }

@@ -1295,6 +1295,7 @@ namespace EOS.UI
         {
             int Copie = 0;
             string Stampante = "";
+            string Report = "";
 
             //int intref = 0;
             //int NumeroCopie = 1;
@@ -1337,10 +1338,12 @@ namespace EOS.UI
             //}
 
             frmPrintSelect PrintSelect = new frmPrintSelect();
+            PrintSelect.Form = "frmSolventi";
             PrintSelect.ShowDialog();
 
             Copie = PrintSelect.Copie;
             Stampante = PrintSelect.Stampante;
+            Report = PrintSelect.Report;
 
             if (Stampante != "")
             {
@@ -1349,7 +1352,7 @@ namespace EOS.UI
                 for (int c = 0; c < gviewSolventi.SelectedRowsCount; c++)
                 {
                     XtraReport myReport = new XtraReport();
-                    myReport = XtraReport.FromFile(@"\\server024\apps\EOS\Documenti\Reports\EtichettaSoluzione68x25.repx");
+                    myReport = XtraReport.FromFile(Report);
 
                     myReport.Parameters["parCodiceSoluzione"].Value = gviewSolventi.GetRowCellValue(rowHandles[c], "CodiceMiscelaSolventi").ToString();
                     myReport.Parameters["parTipoSoluzione"].Value = "Lavoro";
