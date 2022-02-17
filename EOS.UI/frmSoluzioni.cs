@@ -673,7 +673,7 @@ namespace EOS.UI
 
                 ctlUtente = null;
 
-                if(gviewSoluzioni.GetRowCellValue(gviewSoluzioni.FocusedRowHandle, "Stato")!="Preparazione")
+                if(gviewSoluzioni.GetRowCellValue(gviewSoluzioni.FocusedRowHandle, "Stato").ToString()!="Preparazione")
                 {
                     string filter = " (ID <> 5) ";
 
@@ -1698,6 +1698,7 @@ namespace EOS.UI
             tbSalva.Enabled = false;
             XtraMessageBox.Show("la visualizzazione dei dati è stata aggiornata.", "Aggiorna visualizzazione dati", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void butChiudi_Click(object sender, EventArgs e)
         {
             this.Close();

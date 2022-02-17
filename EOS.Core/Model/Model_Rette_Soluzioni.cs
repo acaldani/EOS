@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EOS.Core.Model
 {
-    class Model_Rette_Soluzioni
+    public class Model_Rette_Soluzioni
     {
         public int m_IDRettaSoluzione;
         public int m_IDRetta;

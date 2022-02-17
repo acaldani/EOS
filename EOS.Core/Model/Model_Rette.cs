@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EOS.Core.Control
+namespace EOS.Core.Model
 {
-    class Model_Rette
+    public class Model_Rette
     {
 
         public int m_IDRetta;

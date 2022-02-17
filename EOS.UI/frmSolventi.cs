@@ -433,7 +433,7 @@ namespace EOS.UI
 
                 ctlUtente = null;
 
-                if (gviewSolventi.GetRowCellValue(gviewSolventi.FocusedRowHandle, "Stato") != "Preparazione")
+                if (gviewSolventi.GetRowCellValue(gviewSolventi.FocusedRowHandle, "Stato").ToString() != "Preparazione")
                 {
                     string filter = " (ID <> 5) ";
 

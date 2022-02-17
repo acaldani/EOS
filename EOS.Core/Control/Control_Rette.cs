@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace EOS.Core.Control
 {
-    class Control_Rette
+    public class Control_Rette
     {
         public string ConnectionString;
         public int IDUtente = 0;
@@ -45,19 +45,6 @@ namespace EOS.Core.Control
                         {
                             Model_Rette r = new Model_Rette();
 
-                            //[IDRetta]
-                            //,[CodiceRetta]
-                            //,[Nome]
-                            //,[DefaultGiorniScadenza]
-                            //,[DataScadenza]
-                            //,[IDStato]
-                            //,[Tipologia]
-                            //,[IDSchedaDocumenti]
-                            //,[IDSolvente]
-                            //,[Note]
-                            //,[DataCreazione]
-                            //,[IDUtente]
-
                             if (DBNull.Value.Equals(dr["IDRetta"])) { r.IDRetta = 0; } else { r.IDRetta = Convert.ToInt32(dr["IDRetta"]); }
                             if (DBNull.Value.Equals(dr["CodiceRetta"])) { r.CodiceRetta = ""; } else { r.CodiceRetta = Convert.ToString(dr["CodiceRetta"]); }
                             if (DBNull.Value.Equals(dr["Nome"])) { r.Nome = ""; } else { r.Nome = Convert.ToString(dr["Nome"]); }
@@ -71,7 +58,7 @@ namespace EOS.Core.Control
                             if (DBNull.Value.Equals(dr["DataCreazione"])) { r.DataCreazione = Convert.ToDateTime("01/01/0001"); } else { r.DataCreazione = Convert.ToDateTime(dr["DataCreazione"]); }
                             if (DBNull.Value.Equals(dr["IDUtente"])) { r.IDUtente = 0; } else { r.IDUtente = Convert.ToInt32(dr["IDUtente"]); }
 
-                             ret.Add(r.IDRetta, r);
+                            ret.Add(r.IDRetta, r);
                             r = null;
                         }
                     }
@@ -186,7 +173,7 @@ namespace EOS.Core.Control
                 SQLString = SQLString + "           ,'{5}' ";
                 SQLString = SQLString + "           ,{6} ";
                 SQLString = SQLString + "           ,{7} ";
-                SQLString = SQLString + "           ,{8} ";
+                SQLString = SQLString + "           ,'{8}' ";
                 SQLString = SQLString + "           ,Case When '{9}'<>'01/01/0001 00:00:00' then '{9}' else null end ";
                 SQLString = SQLString + "           ,{10}); SELECT SCOPE_IDENTITY() ";
 
@@ -208,7 +195,7 @@ namespace EOS.Core.Control
                     DataScadenza = "01/01/0001 00:00:00";
                 }
 
-                SQLString = string.Format(SQLString, newcode.ToString(), Retta.CodiceRetta, Retta.Nome.Replace("'", "''"), Retta.DefaultGiorniScadenza, DataScadenza, Retta.IDStato, Retta.Tipologia, Retta.IDSchedaDocumenti, Retta.IDSolvente, Retta.Note.Replace("'", "''"), DataCreazione,Retta.IDUtente);
+                SQLString = string.Format(SQLString, newcode.ToString(), Retta.Nome.Replace("'", "''"), Retta.DefaultGiorniScadenza, DataScadenza, Retta.IDStato, Retta.Tipologia, Retta.IDSchedaDocumenti, Retta.IDSolvente, Retta.Note.Replace("'", "''"), DataCreazione,Retta.IDUtente);
 
                 cmd.CommandText = SQLString;
                 cmd.Connection = cnn;
@@ -243,7 +230,7 @@ namespace EOS.Core.Control
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
 
                 string SQLString = "";
-                SQLString = SQLString + "UPDATE [dbo].[Soluzioni] ";
+                SQLString = SQLString + "UPDATE [dbo].[Rette] ";
                 SQLString = SQLString + "   SET [Nome] = '{0}' ";
                 SQLString = SQLString + "      ,[DefaultGiorniScadenza] = {1} ";
                 SQLString = SQLString + "      ,[DataScadenza] = Case When '{2}'<>'01/01/0001 00:00:00' then '{2}' else null end ";
@@ -288,14 +275,24 @@ namespace EOS.Core.Control
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if (RettaOriginale.IDStato != Retta.IDStato)
                 {
-                    SQLString = "";
-                    SQLString = SQLString + "Update SOL set SOL.IDStato={0} from Rette_Soluzioni RETSOL inner join Soluzioni SOL ON RETSOL.IDSoluzione=SOL.IDSoluzione WHERE RETSOL.IDRetta={1} and SOL.IDStato={2} ";
-                    SQLString = string.Format(SQLString, Retta.IDStato, Retta.IDRetta, RettaOriginale.IDStato);
+                    EOS.Core.Control.Control_RetteSoluzioni ControlRetteSoluzioni = new EOS.Core.Control.Control_RetteSoluzioni();
+                    ControlRetteSoluzioni.ConnectionString = ConnectionString;
 
-                    cmd.CommandText = SQLString;
-                    cmd.Connection = cnn;
-                    cmd.ExecuteNonQuery();
+                    ControlRetteSoluzioni.AnnullaScollegaSoluzioni(Retta.IDRetta, Retta.IDStato, true, false, false);
+
+                    ControlRetteSoluzioni = null;
                 }
+
+                //if (RettaOriginale.IDStato != Retta.IDStato)
+                //{
+                //    SQLString = "";
+                //    SQLString = SQLString + "Update SOL set SOL.IDStato={0} from Rette_Soluzioni RETSOL inner join Soluzioni SOL ON RETSOL.IDSoluzione=SOL.IDSoluzione WHERE RETSOL.IDRetta={1} and SOL.IDStato={2} ";
+                //    SQLString = string.Format(SQLString, Retta.IDStato, Retta.IDRetta, RettaOriginale.IDStato);
+
+                //    cmd.CommandText = SQLString;
+                //    cmd.Connection = cnn;
+                //    cmd.ExecuteNonQuery();
+                //}
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //Ho deciso di far seguire una modifica dello stato della retta ad un conseguente adeguamento dello stato delle soluzioni relative ai punti della retta che si trovano nello
                 //stato della retta prima dell'update. Quindi tutte le soluzioni il cui stato non è cambiato per un operazione specifica su quella soluzione seguiranno sempre lo stato della
@@ -373,7 +370,7 @@ namespace EOS.Core.Control
                 }
                 else
                 {
-                    SQLStringLog = SQLStringLog + "CodiceRetta = " + ctlTranscode.GetCodiceSoluzioneByID(Retta.IDRetta) + System.Environment.NewLine;
+                    SQLStringLog = SQLStringLog + "CodiceRetta = " + ctlTranscode.GetCodiceRettaByID(Retta.IDRetta) + System.Environment.NewLine;
 
                     if (Retta.Nome != RettaOriginale.Nome)
                     {
@@ -418,7 +415,7 @@ namespace EOS.Core.Control
 
                 ctlLog.ConnectionString = ConnectionString;
 
-                ctlLog.InsertLog(TipoOperazione, "Rette", Retta.IDRetta, ctlTranscode.GetCodiceSoluzioneByID(Retta.IDRetta), SQLStringLog, IDUtente);
+                ctlLog.InsertLog(TipoOperazione, "Rette", Retta.IDRetta, ctlTranscode.GetCodiceRettaByID(Retta.IDRetta), SQLStringLog, IDUtente);
 
                 ctlTranscode = null;
                 ctlLog = null;

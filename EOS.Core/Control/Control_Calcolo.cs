@@ -609,8 +609,6 @@ namespace EOS.Core.Control
                     }
                 }
 
-                
-
                 using (var cnn = new SqlConnection())
                 {
                     cnn.ConnectionString = ConnectionString;
@@ -622,11 +620,11 @@ namespace EOS.Core.Control
                     {
                         if ((DataScadenza.ToString() == "31/12/2999 00:00:00") || (DataScadenza.ToString() == "01/01/0001 00:00:00"))
                         {
-                            cmd = new SqlCommand("Update Retta set DataScadenza = NULL Where IDRetta = @ID ");
+                            cmd = new SqlCommand("Update Rette set DataScadenza = NULL Where IDRetta = @ID ");
                         }
                         else
                         {
-                            cmd = new SqlCommand("Update Retta set DataScadenza = @DataScadenza Where IDRetta = @ID ");
+                            cmd = new SqlCommand("Update Rette set DataScadenza = @DataScadenza Where IDRetta = @ID ");
                         }
                     }
                     else
@@ -739,7 +737,7 @@ namespace EOS.Core.Control
                 }
                 else
                 {
-                    SQLString = "Select count(*) as NumeroComponenti from RetteSoluzioni WHERE IDRetta='" + ID + "' ";
+                    SQLString = "Select count(*) as NumeroComponenti from Rette_Soluzioni WHERE IDRetta='" + ID + "' ";
                 }
             }    
 
@@ -808,7 +806,7 @@ namespace EOS.Core.Control
 
             if (SoluzioneSolvente == "Retta")
             {
-                SQLString = "select Rette.Tipologia from Rette where Rette.IDRette='" + ID + "' ";
+                SQLString = "select Rette.Tipologia from Rette where Rette.IDRetta='" + ID + "' ";
             }
             else
             {

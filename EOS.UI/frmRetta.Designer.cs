@@ -47,6 +47,18 @@ namespace EOS.UI
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridRette = new DevExpress.XtraGrid.GridControl();
             this.gviewRette = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIDRetta = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCodiceRetta = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTipologia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNome = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStato = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSolvente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMiscelaSolventi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDefaultGiorniScadenza = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDataScadenza = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDataCreazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUtenteCreazione = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtCodiceRetta = new DevExpress.XtraEditors.TextEdit();
             this.cboTipologia = new DevExpress.XtraEditors.GridLookUpEdit();
@@ -85,12 +97,59 @@ namespace EOS.UI
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.soluzioniTipologiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridRetteDettaglio = new DevExpress.XtraGrid.GridControl();
-            this.gviewRetteDettaglio = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.butAggiungiComponente = new DevExpress.XtraEditors.SimpleButton();
-            this.butCancella = new DevExpress.XtraEditors.SimpleButton();
+            this.gridRetteDetails = new DevExpress.XtraGrid.GridControl();
+            this.gviewRetteDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDSoluzione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubCodiceSoluzione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubTipologia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubTipologia = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.soluzioniTipologiaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubNome = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubIDStato = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubStato = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.compostiStatiBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDUbicazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubUbicazione = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.ubicazioniSelectCommandBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView12 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubUMVolumeFinale = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubVolumeFinale = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubIDSolvente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubSolvente = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.solventiBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDSchedaDocumenti = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubSchedaDocumenti = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDApparecchio = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubApparecchio = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.apparecchiSelectCommandBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDUtensile = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubUtensile = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.utensiliSelectCommandBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDApparecchio2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubApparecchio2 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubIDUtensile2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubUtensile2 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSubDefaultGiorniScadenza = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubDataScadenza = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubNotePrescrittive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubNoteDescrittive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubDataCreazione = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSubIDUtente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubUtente = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.loginUtentiBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.butAggiungi = new DevExpress.XtraEditors.SimpleButton();
+            this.butScollega = new DevExpress.XtraEditors.SimpleButton();
             this.butModifica = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.butScollegaEAnnulla = new DevExpress.XtraEditors.SimpleButton();
             this.butClose = new DevExpress.XtraEditors.SimpleButton();
             this.soluzioni_TipologiaTableAdapter = new EOS.UI.SoluzioniTableAdapters.Soluzioni_TipologiaTableAdapter();
             this.materialiLottiSelectCommandTableAdapter = new EOS.UI.LupinTableAdapters.MaterialiLottiSelectCommandTableAdapter();
@@ -98,6 +157,9 @@ namespace EOS.UI
             this.composti_StatiTableAdapter = new EOS.UI.SoluzioniTableAdapters.Composti_StatiTableAdapter();
             this.login_UtentiTableAdapter = new EOS.UI.SoluzioniTableAdapters.Login_UtentiTableAdapter();
             this.rette_TipologiaTableAdapter = new EOS.UI.SoluzioniTableAdapters.Rette_TipologiaTableAdapter();
+            this.apparecchiSelectCommandTableAdapter = new EOS.UI.LupinTableAdapters.ApparecchiSelectCommandTableAdapter();
+            this.utensiliSelectCommandTableAdapter = new EOS.UI.LupinTableAdapters.UtensiliSelectCommandTableAdapter();
+            this.ubicazioniSelectCommandTableAdapter = new EOS.UI.LupinTableAdapters.UbicazioniSelectCommandTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRette)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gviewRette)).BeginInit();
@@ -141,8 +203,35 @@ namespace EOS.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDettaglio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDettaglio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubTipologia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubStato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compostiStatiBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUbicazione)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ubicazioniSelectCommandBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubSolvente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventiBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubSchedaDocumenti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubApparecchio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.apparecchiSelectCommandBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtensile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utensiliSelectCommandBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubApparecchio2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtensile2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginUtentiBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -199,30 +288,35 @@ namespace EOS.UI
             this.tbNuovo.Caption = "Nuovo";
             this.tbNuovo.Id = 0;
             this.tbNuovo.Name = "tbNuovo";
+            this.tbNuovo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbNuovo_ItemClick);
             // 
             // tbDuplica
             // 
             this.tbDuplica.Caption = "Nuovo da Modello";
             this.tbDuplica.Id = 1;
             this.tbDuplica.Name = "tbDuplica";
+            this.tbDuplica.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbDuplica_ItemClick);
             // 
             // tbSalva
             // 
             this.tbSalva.Caption = "Salva";
             this.tbSalva.Id = 2;
             this.tbSalva.Name = "tbSalva";
+            this.tbSalva.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbSalva_ItemClick);
             // 
             // tbAggiorna
             // 
             this.tbAggiorna.Caption = "Aggiorna";
             this.tbAggiorna.Id = 3;
             this.tbAggiorna.Name = "tbAggiorna";
+            this.tbAggiorna.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbAggiorna_ItemClick);
             // 
             // tbStampa
             // 
             this.tbStampa.Caption = "Stampa Etichette";
             this.tbStampa.Id = 4;
             this.tbStampa.Name = "tbStampa";
+            this.tbStampa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbStampa_ItemClick);
             // 
             // tbStampaReport
             // 
@@ -235,12 +329,14 @@ namespace EOS.UI
             this.tbEsportaExcel.Caption = "Esporta su Excel";
             this.tbEsportaExcel.Id = 6;
             this.tbEsportaExcel.Name = "tbEsportaExcel";
+            this.tbEsportaExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbEsportaExcel_ItemClick);
             // 
             // tbVisualizzaLog
             // 
             this.tbVisualizzaLog.Caption = "Visualizza Log";
             this.tbVisualizzaLog.Id = 7;
             this.tbVisualizzaLog.Name = "tbVisualizzaLog";
+            this.tbVisualizzaLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbVisualizzaLog_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -284,13 +380,123 @@ namespace EOS.UI
             this.gridRette.TabIndex = 4;
             this.gridRette.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gviewRette});
+            this.gridRette.DoubleClick += new System.EventHandler(this.gridRette_DoubleClick);
             // 
             // gviewRette
             // 
+            this.gviewRette.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIDRetta,
+            this.colCodiceRetta,
+            this.colTipologia,
+            this.colNome,
+            this.colStato,
+            this.colSolvente,
+            this.colMiscelaSolventi,
+            this.colDefaultGiorniScadenza,
+            this.colDataScadenza,
+            this.colNote,
+            this.colDataCreazione,
+            this.colUtenteCreazione});
             this.gviewRette.GridControl = this.gridRette;
             this.gviewRette.Name = "gviewRette";
             this.gviewRette.OptionsView.ShowGroupPanel = false;
             this.gviewRette.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gviewRette_FocusedRowChanged);
+            // 
+            // colIDRetta
+            // 
+            this.colIDRetta.Caption = "ID Retta";
+            this.colIDRetta.FieldName = "IDRetta";
+            this.colIDRetta.Name = "colIDRetta";
+            this.colIDRetta.Visible = true;
+            this.colIDRetta.VisibleIndex = 0;
+            // 
+            // colCodiceRetta
+            // 
+            this.colCodiceRetta.Caption = "Codice Retta";
+            this.colCodiceRetta.FieldName = "CodiceRetta";
+            this.colCodiceRetta.Name = "colCodiceRetta";
+            this.colCodiceRetta.Visible = true;
+            this.colCodiceRetta.VisibleIndex = 1;
+            // 
+            // colTipologia
+            // 
+            this.colTipologia.Caption = "Tipologia";
+            this.colTipologia.FieldName = "Tipologia";
+            this.colTipologia.Name = "colTipologia";
+            this.colTipologia.Visible = true;
+            this.colTipologia.VisibleIndex = 2;
+            // 
+            // colNome
+            // 
+            this.colNome.Caption = "Nome";
+            this.colNome.FieldName = "Nome";
+            this.colNome.Name = "colNome";
+            this.colNome.Visible = true;
+            this.colNome.VisibleIndex = 3;
+            // 
+            // colStato
+            // 
+            this.colStato.Caption = "Stato";
+            this.colStato.FieldName = "Stato";
+            this.colStato.Name = "colStato";
+            this.colStato.Visible = true;
+            this.colStato.VisibleIndex = 4;
+            // 
+            // colSolvente
+            // 
+            this.colSolvente.Caption = "Solvente";
+            this.colSolvente.FieldName = "Solvente";
+            this.colSolvente.Name = "colSolvente";
+            this.colSolvente.Visible = true;
+            this.colSolvente.VisibleIndex = 5;
+            // 
+            // colMiscelaSolventi
+            // 
+            this.colMiscelaSolventi.Caption = "Miscela di Solventi";
+            this.colMiscelaSolventi.FieldName = "MiscelaSolventi";
+            this.colMiscelaSolventi.Name = "colMiscelaSolventi";
+            this.colMiscelaSolventi.Visible = true;
+            this.colMiscelaSolventi.VisibleIndex = 6;
+            // 
+            // colDefaultGiorniScadenza
+            // 
+            this.colDefaultGiorniScadenza.Caption = "Default Giorni Scadenza";
+            this.colDefaultGiorniScadenza.FieldName = "DefaultGiorniScadenza";
+            this.colDefaultGiorniScadenza.Name = "colDefaultGiorniScadenza";
+            this.colDefaultGiorniScadenza.Visible = true;
+            this.colDefaultGiorniScadenza.VisibleIndex = 7;
+            // 
+            // colDataScadenza
+            // 
+            this.colDataScadenza.Caption = "Data Scadenza";
+            this.colDataScadenza.FieldName = "DataScadenza";
+            this.colDataScadenza.Name = "colDataScadenza";
+            this.colDataScadenza.Visible = true;
+            this.colDataScadenza.VisibleIndex = 8;
+            // 
+            // colNote
+            // 
+            this.colNote.Caption = "Note";
+            this.colNote.FieldName = "Note";
+            this.colNote.Name = "colNote";
+            this.colNote.Visible = true;
+            this.colNote.VisibleIndex = 9;
+            // 
+            // colDataCreazione
+            // 
+            this.colDataCreazione.Caption = "Data Creazione";
+            this.colDataCreazione.FieldName = "DataCreazione";
+            this.colDataCreazione.Name = "colDataCreazione";
+            this.colDataCreazione.Visible = true;
+            this.colDataCreazione.VisibleIndex = 10;
+            // 
+            // colUtenteCreazione
+            // 
+            this.colUtenteCreazione.Caption = "Utente Creazione";
+            this.colUtenteCreazione.FieldName = "UtenteCreazione";
+            this.colUtenteCreazione.Name = "colUtenteCreazione";
+            this.colUtenteCreazione.Visible = true;
+            this.colUtenteCreazione.VisibleIndex = 11;
             // 
             // layoutControl1
             // 
@@ -399,6 +605,7 @@ namespace EOS.UI
             this.cboSingoloSolvente.Size = new System.Drawing.Size(498, 20);
             this.cboSingoloSolvente.StyleController = this.layoutControl1;
             this.cboSingoloSolvente.TabIndex = 9;
+            this.cboSingoloSolvente.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
             // 
             // materialiLottiSelectCommandBindingSource
             // 
@@ -433,6 +640,7 @@ namespace EOS.UI
             this.cboMiscelaSolventi.Size = new System.Drawing.Size(499, 20);
             this.cboMiscelaSolventi.StyleController = this.layoutControl1;
             this.cboMiscelaSolventi.TabIndex = 10;
+            this.cboMiscelaSolventi.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
             // 
             // solventiBindingSource
             // 
@@ -659,38 +867,462 @@ namespace EOS.UI
             this.soluzioniTipologiaBindingSource.DataMember = "Soluzioni_Tipologia";
             this.soluzioniTipologiaBindingSource.DataSource = this.soluzioni;
             // 
-            // gridRetteDettaglio
+            // gridRetteDetails
             // 
-            this.gridRetteDettaglio.Location = new System.Drawing.Point(12, 531);
-            this.gridRetteDettaglio.MainView = this.gviewRetteDettaglio;
-            this.gridRetteDettaglio.MenuManager = this.barManager1;
-            this.gridRetteDettaglio.Name = "gridRetteDettaglio";
-            this.gridRetteDettaglio.Size = new System.Drawing.Size(1277, 300);
-            this.gridRetteDettaglio.TabIndex = 10;
-            this.gridRetteDettaglio.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gviewRetteDettaglio});
+            this.gridRetteDetails.Location = new System.Drawing.Point(12, 531);
+            this.gridRetteDetails.MainView = this.gviewRetteDetails;
+            this.gridRetteDetails.MenuManager = this.barManager1;
+            this.gridRetteDetails.Name = "gridRetteDetails";
+            this.gridRetteDetails.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.cboSubTipologia,
+            this.cboSubStato,
+            this.cboSubSolvente,
+            this.cboSubSchedaDocumenti,
+            this.cboSubApparecchio,
+            this.cboSubUtensile,
+            this.cboSubApparecchio2,
+            this.cboSubUtensile2,
+            this.cboSubUtente,
+            this.cboSubUbicazione});
+            this.gridRetteDetails.Size = new System.Drawing.Size(1277, 300);
+            this.gridRetteDetails.TabIndex = 10;
+            this.gridRetteDetails.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gviewRetteDetails});
+            this.gridRetteDetails.DoubleClick += new System.EventHandler(this.gridRetteDetails_DoubleClick);
             // 
-            // gviewRetteDettaglio
+            // gviewRetteDetails
             // 
-            this.gviewRetteDettaglio.GridControl = this.gridRetteDettaglio;
-            this.gviewRetteDettaglio.Name = "gviewRetteDettaglio";
-            this.gviewRetteDettaglio.OptionsView.ShowGroupPanel = false;
+            this.gviewRetteDetails.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colSubIDSoluzione,
+            this.colSubCodiceSoluzione,
+            this.colSubTipologia,
+            this.colSubNome,
+            this.colSubIDStato,
+            this.colSubIDUbicazione,
+            this.colSubUMVolumeFinale,
+            this.colSubVolumeFinale,
+            this.colSubIDSolvente,
+            this.colSubIDSchedaDocumenti,
+            this.colSubIDApparecchio,
+            this.colSubIDUtensile,
+            this.colSubIDApparecchio2,
+            this.colSubIDUtensile2,
+            this.colSubDefaultGiorniScadenza,
+            this.colSubDataScadenza,
+            this.colSubNotePrescrittive,
+            this.colSubNoteDescrittive,
+            this.colSubDataCreazione,
+            this.colSubIDUtente});
+            this.gviewRetteDetails.GridControl = this.gridRetteDetails;
+            this.gviewRetteDetails.Name = "gviewRetteDetails";
+            this.gviewRetteDetails.OptionsView.ShowGroupPanel = false;
             // 
-            // butAggiungiComponente
+            // colSubIDSoluzione
             // 
-            this.butAggiungiComponente.Location = new System.Drawing.Point(1094, 837);
-            this.butAggiungiComponente.Name = "butAggiungiComponente";
-            this.butAggiungiComponente.Size = new System.Drawing.Size(195, 22);
-            this.butAggiungiComponente.TabIndex = 33;
-            this.butAggiungiComponente.Text = "Aggiungi Gruppo Punti/Soluzioni";
+            this.colSubIDSoluzione.Caption = "ID Soluzione";
+            this.colSubIDSoluzione.FieldName = "IDSoluzione";
+            this.colSubIDSoluzione.Name = "colSubIDSoluzione";
+            this.colSubIDSoluzione.Visible = true;
+            this.colSubIDSoluzione.VisibleIndex = 0;
             // 
-            // butCancella
+            // colSubCodiceSoluzione
             // 
-            this.butCancella.Location = new System.Drawing.Point(491, 837);
-            this.butCancella.Name = "butCancella";
-            this.butCancella.Size = new System.Drawing.Size(195, 22);
-            this.butCancella.TabIndex = 35;
-            this.butCancella.Text = "Scollega Punto/Soluzione";
+            this.colSubCodiceSoluzione.Caption = "Codice Soluzione";
+            this.colSubCodiceSoluzione.FieldName = "CodiceSoluzione";
+            this.colSubCodiceSoluzione.Name = "colSubCodiceSoluzione";
+            this.colSubCodiceSoluzione.Visible = true;
+            this.colSubCodiceSoluzione.VisibleIndex = 1;
+            // 
+            // colSubTipologia
+            // 
+            this.colSubTipologia.Caption = "Tipologia";
+            this.colSubTipologia.ColumnEdit = this.cboSubTipologia;
+            this.colSubTipologia.FieldName = "Tipologia";
+            this.colSubTipologia.Name = "colSubTipologia";
+            this.colSubTipologia.Visible = true;
+            this.colSubTipologia.VisibleIndex = 19;
+            // 
+            // cboSubTipologia
+            // 
+            this.cboSubTipologia.AutoHeight = false;
+            this.cboSubTipologia.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubTipologia.DataSource = this.soluzioniTipologiaBindingSource1;
+            this.cboSubTipologia.DisplayMember = "NomeTipologia";
+            this.cboSubTipologia.Name = "cboSubTipologia";
+            this.cboSubTipologia.PopupView = this.repositoryItemGridLookUpEdit1View;
+            this.cboSubTipologia.ValueMember = "NomeTipologia";
+            // 
+            // soluzioniTipologiaBindingSource1
+            // 
+            this.soluzioniTipologiaBindingSource1.DataMember = "Soluzioni_Tipologia";
+            this.soluzioniTipologiaBindingSource1.DataSource = this.soluzioni;
+            // 
+            // repositoryItemGridLookUpEdit1View
+            // 
+            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubNome
+            // 
+            this.colSubNome.Caption = "Nome";
+            this.colSubNome.FieldName = "Nome";
+            this.colSubNome.Name = "colSubNome";
+            this.colSubNome.Visible = true;
+            this.colSubNome.VisibleIndex = 2;
+            // 
+            // colSubIDStato
+            // 
+            this.colSubIDStato.Caption = "Stato";
+            this.colSubIDStato.ColumnEdit = this.cboSubStato;
+            this.colSubIDStato.FieldName = "IDStato";
+            this.colSubIDStato.Name = "colSubIDStato";
+            this.colSubIDStato.Visible = true;
+            this.colSubIDStato.VisibleIndex = 3;
+            // 
+            // cboSubStato
+            // 
+            this.cboSubStato.AutoHeight = false;
+            this.cboSubStato.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubStato.DataSource = this.compostiStatiBindingSource1;
+            this.cboSubStato.DisplayMember = "Nome";
+            this.cboSubStato.Name = "cboSubStato";
+            this.cboSubStato.PopupView = this.gridView4;
+            this.cboSubStato.ValueMember = "ID";
+            // 
+            // compostiStatiBindingSource1
+            // 
+            this.compostiStatiBindingSource1.DataMember = "Composti_Stati";
+            this.compostiStatiBindingSource1.DataSource = this.soluzioni;
+            // 
+            // gridView4
+            // 
+            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDUbicazione
+            // 
+            this.colSubIDUbicazione.Caption = "Ubicazione";
+            this.colSubIDUbicazione.ColumnEdit = this.cboSubUbicazione;
+            this.colSubIDUbicazione.FieldName = "IDUbicazione";
+            this.colSubIDUbicazione.Name = "colSubIDUbicazione";
+            this.colSubIDUbicazione.Visible = true;
+            this.colSubIDUbicazione.VisibleIndex = 18;
+            // 
+            // cboSubUbicazione
+            // 
+            this.cboSubUbicazione.AutoHeight = false;
+            this.cboSubUbicazione.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubUbicazione.DataSource = this.ubicazioniSelectCommandBindingSource;
+            this.cboSubUbicazione.DisplayMember = "Ubicazione";
+            this.cboSubUbicazione.Name = "cboSubUbicazione";
+            this.cboSubUbicazione.PopupView = this.gridView12;
+            this.cboSubUbicazione.ValueMember = "IDUbicazione";
+            // 
+            // ubicazioniSelectCommandBindingSource
+            // 
+            this.ubicazioniSelectCommandBindingSource.DataMember = "UbicazioniSelectCommand";
+            this.ubicazioniSelectCommandBindingSource.DataSource = this.lupin;
+            // 
+            // gridView12
+            // 
+            this.gridView12.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView12.Name = "gridView12";
+            this.gridView12.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView12.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubUMVolumeFinale
+            // 
+            this.colSubUMVolumeFinale.Caption = "UM Volume Finale";
+            this.colSubUMVolumeFinale.FieldName = "UMVolumeFinale";
+            this.colSubUMVolumeFinale.Name = "colSubUMVolumeFinale";
+            this.colSubUMVolumeFinale.Visible = true;
+            this.colSubUMVolumeFinale.VisibleIndex = 4;
+            // 
+            // colSubVolumeFinale
+            // 
+            this.colSubVolumeFinale.Caption = "Volume Finale";
+            this.colSubVolumeFinale.FieldName = "VolumeFinale";
+            this.colSubVolumeFinale.Name = "colSubVolumeFinale";
+            this.colSubVolumeFinale.Visible = true;
+            this.colSubVolumeFinale.VisibleIndex = 5;
+            // 
+            // colSubIDSolvente
+            // 
+            this.colSubIDSolvente.Caption = "Miscela di Solventi";
+            this.colSubIDSolvente.ColumnEdit = this.cboSubSolvente;
+            this.colSubIDSolvente.FieldName = "IDSolvente";
+            this.colSubIDSolvente.Name = "colSubIDSolvente";
+            this.colSubIDSolvente.Visible = true;
+            this.colSubIDSolvente.VisibleIndex = 6;
+            // 
+            // cboSubSolvente
+            // 
+            this.cboSubSolvente.AutoHeight = false;
+            this.cboSubSolvente.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubSolvente.DataSource = this.solventiBindingSource1;
+            this.cboSubSolvente.DisplayMember = "Nome";
+            this.cboSubSolvente.Name = "cboSubSolvente";
+            this.cboSubSolvente.PopupView = this.gridView5;
+            this.cboSubSolvente.ValueMember = "IDSolvente";
+            this.cboSubSolvente.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
+            // 
+            // solventiBindingSource1
+            // 
+            this.solventiBindingSource1.DataMember = "Solventi";
+            this.solventiBindingSource1.DataSource = this.solventi;
+            // 
+            // gridView5
+            // 
+            this.gridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView5.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDSchedaDocumenti
+            // 
+            this.colSubIDSchedaDocumenti.Caption = "Solvente Singolo";
+            this.colSubIDSchedaDocumenti.ColumnEdit = this.cboSubSchedaDocumenti;
+            this.colSubIDSchedaDocumenti.FieldName = "IDSchedaDocumenti";
+            this.colSubIDSchedaDocumenti.Name = "colSubIDSchedaDocumenti";
+            this.colSubIDSchedaDocumenti.Visible = true;
+            this.colSubIDSchedaDocumenti.VisibleIndex = 7;
+            // 
+            // cboSubSchedaDocumenti
+            // 
+            this.cboSubSchedaDocumenti.AutoHeight = false;
+            this.cboSubSchedaDocumenti.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubSchedaDocumenti.DataSource = this.materialiLottiSelectCommandBindingSource;
+            this.cboSubSchedaDocumenti.DisplayMember = "DenominazioneMateriale";
+            this.cboSubSchedaDocumenti.Name = "cboSubSchedaDocumenti";
+            this.cboSubSchedaDocumenti.PopupView = this.gridView6;
+            this.cboSubSchedaDocumenti.ValueMember = "IDSchedaDocumenti";
+            this.cboSubSchedaDocumenti.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
+            // 
+            // gridView6
+            // 
+            this.gridView6.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView6.Name = "gridView6";
+            this.gridView6.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView6.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDApparecchio
+            // 
+            this.colSubIDApparecchio.Caption = "Apparecchio";
+            this.colSubIDApparecchio.ColumnEdit = this.cboSubApparecchio;
+            this.colSubIDApparecchio.FieldName = "IDApparecchio";
+            this.colSubIDApparecchio.Name = "colSubIDApparecchio";
+            this.colSubIDApparecchio.Visible = true;
+            this.colSubIDApparecchio.VisibleIndex = 8;
+            // 
+            // cboSubApparecchio
+            // 
+            this.cboSubApparecchio.AutoHeight = false;
+            this.cboSubApparecchio.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubApparecchio.DataSource = this.apparecchiSelectCommandBindingSource;
+            this.cboSubApparecchio.DisplayMember = "NumeroApparecchio";
+            this.cboSubApparecchio.Name = "cboSubApparecchio";
+            this.cboSubApparecchio.PopupView = this.gridView7;
+            this.cboSubApparecchio.ValueMember = "IDApparecchio";
+            this.cboSubApparecchio.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSizeApparecchi);
+            // 
+            // apparecchiSelectCommandBindingSource
+            // 
+            this.apparecchiSelectCommandBindingSource.DataMember = "ApparecchiSelectCommand";
+            this.apparecchiSelectCommandBindingSource.DataSource = this.lupin;
+            // 
+            // gridView7
+            // 
+            this.gridView7.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView7.Name = "gridView7";
+            this.gridView7.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView7.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDUtensile
+            // 
+            this.colSubIDUtensile.Caption = "Utensile";
+            this.colSubIDUtensile.ColumnEdit = this.cboSubUtensile;
+            this.colSubIDUtensile.FieldName = "IDUtensile";
+            this.colSubIDUtensile.Name = "colSubIDUtensile";
+            this.colSubIDUtensile.Visible = true;
+            this.colSubIDUtensile.VisibleIndex = 9;
+            // 
+            // cboSubUtensile
+            // 
+            this.cboSubUtensile.AutoHeight = false;
+            this.cboSubUtensile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubUtensile.DataSource = this.utensiliSelectCommandBindingSource;
+            this.cboSubUtensile.DisplayMember = "Descrizione";
+            this.cboSubUtensile.Name = "cboSubUtensile";
+            this.cboSubUtensile.PopupView = this.gridView8;
+            this.cboSubUtensile.ValueMember = "IDUtensile";
+            this.cboSubUtensile.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
+            // 
+            // utensiliSelectCommandBindingSource
+            // 
+            this.utensiliSelectCommandBindingSource.DataMember = "UtensiliSelectCommand";
+            this.utensiliSelectCommandBindingSource.DataSource = this.lupin;
+            // 
+            // gridView8
+            // 
+            this.gridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView8.Name = "gridView8";
+            this.gridView8.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView8.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDApparecchio2
+            // 
+            this.colSubIDApparecchio2.Caption = "Apparecchio 2";
+            this.colSubIDApparecchio2.ColumnEdit = this.cboSubApparecchio2;
+            this.colSubIDApparecchio2.FieldName = "IDApparecchio2";
+            this.colSubIDApparecchio2.Name = "colSubIDApparecchio2";
+            this.colSubIDApparecchio2.Visible = true;
+            this.colSubIDApparecchio2.VisibleIndex = 10;
+            // 
+            // cboSubApparecchio2
+            // 
+            this.cboSubApparecchio2.AutoHeight = false;
+            this.cboSubApparecchio2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubApparecchio2.DataSource = this.apparecchiSelectCommandBindingSource;
+            this.cboSubApparecchio2.DisplayMember = "NumeroApparecchio";
+            this.cboSubApparecchio2.Name = "cboSubApparecchio2";
+            this.cboSubApparecchio2.PopupView = this.gridView9;
+            this.cboSubApparecchio2.ValueMember = "IDApparecchio";
+            this.cboSubApparecchio2.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSizeApparecchi);
+            // 
+            // gridView9
+            // 
+            this.gridView9.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView9.Name = "gridView9";
+            this.gridView9.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView9.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubIDUtensile2
+            // 
+            this.colSubIDUtensile2.Caption = "Utensile 2";
+            this.colSubIDUtensile2.ColumnEdit = this.cboSubUtensile2;
+            this.colSubIDUtensile2.FieldName = "IDUtensile2";
+            this.colSubIDUtensile2.Name = "colSubIDUtensile2";
+            this.colSubIDUtensile2.Visible = true;
+            this.colSubIDUtensile2.VisibleIndex = 11;
+            // 
+            // cboSubUtensile2
+            // 
+            this.cboSubUtensile2.AutoHeight = false;
+            this.cboSubUtensile2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubUtensile2.DataSource = this.utensiliSelectCommandBindingSource;
+            this.cboSubUtensile2.DisplayMember = "Descrizione";
+            this.cboSubUtensile2.Name = "cboSubUtensile2";
+            this.cboSubUtensile2.PopupView = this.gridView10;
+            this.cboSubUtensile2.ValueMember = "IDUtensile";
+            this.cboSubUtensile2.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.GridSize);
+            // 
+            // gridView10
+            // 
+            this.gridView10.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView10.Name = "gridView10";
+            this.gridView10.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView10.OptionsView.ShowGroupPanel = false;
+            // 
+            // colSubDefaultGiorniScadenza
+            // 
+            this.colSubDefaultGiorniScadenza.Caption = "Default Giorni Scadenza";
+            this.colSubDefaultGiorniScadenza.FieldName = "DefaultGiorniScadenza";
+            this.colSubDefaultGiorniScadenza.Name = "colSubDefaultGiorniScadenza";
+            this.colSubDefaultGiorniScadenza.Visible = true;
+            this.colSubDefaultGiorniScadenza.VisibleIndex = 12;
+            // 
+            // colSubDataScadenza
+            // 
+            this.colSubDataScadenza.Caption = "Data Scadenza";
+            this.colSubDataScadenza.FieldName = "DataScadenza";
+            this.colSubDataScadenza.Name = "colSubDataScadenza";
+            this.colSubDataScadenza.Visible = true;
+            this.colSubDataScadenza.VisibleIndex = 13;
+            // 
+            // colSubNotePrescrittive
+            // 
+            this.colSubNotePrescrittive.Caption = "Note Prescrittive";
+            this.colSubNotePrescrittive.FieldName = "NotePrescrittive";
+            this.colSubNotePrescrittive.Name = "colSubNotePrescrittive";
+            this.colSubNotePrescrittive.Visible = true;
+            this.colSubNotePrescrittive.VisibleIndex = 14;
+            // 
+            // colSubNoteDescrittive
+            // 
+            this.colSubNoteDescrittive.Caption = "Note Descrittive";
+            this.colSubNoteDescrittive.FieldName = "NoteDescrittive";
+            this.colSubNoteDescrittive.Name = "colSubNoteDescrittive";
+            this.colSubNoteDescrittive.Visible = true;
+            this.colSubNoteDescrittive.VisibleIndex = 15;
+            // 
+            // colSubDataCreazione
+            // 
+            this.colSubDataCreazione.Caption = "Data Creazione";
+            this.colSubDataCreazione.FieldName = "DataCreazione";
+            this.colSubDataCreazione.Name = "colSubDataCreazione";
+            this.colSubDataCreazione.Visible = true;
+            this.colSubDataCreazione.VisibleIndex = 16;
+            // 
+            // colSubIDUtente
+            // 
+            this.colSubIDUtente.Caption = "Utente Creazione";
+            this.colSubIDUtente.ColumnEdit = this.cboSubUtente;
+            this.colSubIDUtente.FieldName = "IDUtente";
+            this.colSubIDUtente.Name = "colSubIDUtente";
+            this.colSubIDUtente.Visible = true;
+            this.colSubIDUtente.VisibleIndex = 17;
+            // 
+            // cboSubUtente
+            // 
+            this.cboSubUtente.AutoHeight = false;
+            this.cboSubUtente.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubUtente.DataSource = this.loginUtentiBindingSource1;
+            this.cboSubUtente.DisplayMember = "NomeUtente";
+            this.cboSubUtente.Name = "cboSubUtente";
+            this.cboSubUtente.PopupView = this.gridView11;
+            this.cboSubUtente.ValueMember = "IDUtente";
+            // 
+            // loginUtentiBindingSource1
+            // 
+            this.loginUtentiBindingSource1.DataMember = "Login_Utenti";
+            this.loginUtentiBindingSource1.DataSource = this.soluzioni;
+            // 
+            // gridView11
+            // 
+            this.gridView11.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView11.Name = "gridView11";
+            this.gridView11.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView11.OptionsView.ShowGroupPanel = false;
+            // 
+            // butAggiungi
+            // 
+            this.butAggiungi.Location = new System.Drawing.Point(1094, 837);
+            this.butAggiungi.Name = "butAggiungi";
+            this.butAggiungi.Size = new System.Drawing.Size(195, 22);
+            this.butAggiungi.TabIndex = 33;
+            this.butAggiungi.Text = "Aggiungi Gruppo Punti/Soluzioni";
+            // 
+            // butScollega
+            // 
+            this.butScollega.Location = new System.Drawing.Point(491, 837);
+            this.butScollega.Name = "butScollega";
+            this.butScollega.Size = new System.Drawing.Size(195, 22);
+            this.butScollega.TabIndex = 35;
+            this.butScollega.Text = "Scollega Punto/Soluzione";
             // 
             // butModifica
             // 
@@ -700,13 +1332,13 @@ namespace EOS.UI
             this.butModifica.TabIndex = 34;
             this.butModifica.Text = "Modifica Punto/Soluzione";
             // 
-            // simpleButton1
+            // butScollegaEAnnulla
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(692, 837);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(195, 22);
-            this.simpleButton1.TabIndex = 36;
-            this.simpleButton1.Text = "Scollega e Annulla Punto/Soluzione";
+            this.butScollegaEAnnulla.Location = new System.Drawing.Point(692, 837);
+            this.butScollegaEAnnulla.Name = "butScollegaEAnnulla";
+            this.butScollegaEAnnulla.Size = new System.Drawing.Size(195, 22);
+            this.butScollegaEAnnulla.TabIndex = 36;
+            this.butScollegaEAnnulla.Text = "Scollega e Annulla Punto/Soluzione";
             // 
             // butClose
             // 
@@ -741,17 +1373,29 @@ namespace EOS.UI
             // 
             this.rette_TipologiaTableAdapter.ClearBeforeFill = true;
             // 
+            // apparecchiSelectCommandTableAdapter
+            // 
+            this.apparecchiSelectCommandTableAdapter.ClearBeforeFill = true;
+            // 
+            // utensiliSelectCommandTableAdapter
+            // 
+            this.utensiliSelectCommandTableAdapter.ClearBeforeFill = true;
+            // 
+            // ubicazioniSelectCommandTableAdapter
+            // 
+            this.ubicazioniSelectCommandTableAdapter.ClearBeforeFill = true;
+            // 
             // frmRetta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1302, 913);
             this.Controls.Add(this.butClose);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.butAggiungiComponente);
-            this.Controls.Add(this.butCancella);
+            this.Controls.Add(this.butScollegaEAnnulla);
+            this.Controls.Add(this.butAggiungi);
+            this.Controls.Add(this.butScollega);
             this.Controls.Add(this.butModifica);
-            this.Controls.Add(this.gridRetteDettaglio);
+            this.Controls.Add(this.gridRetteDetails);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.gridRette);
             this.Controls.Add(this.barDockControlLeft);
@@ -760,6 +1404,7 @@ namespace EOS.UI
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmRetta";
             this.Text = "Rette di Taratura";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRetta_FormClosing);
             this.Load += new System.EventHandler(this.frmRetta_Load);
             this.Shown += new System.EventHandler(this.frmRetta_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -805,8 +1450,35 @@ namespace EOS.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDettaglio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDettaglio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRetteDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gviewRetteDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubTipologia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluzioniTipologiaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubStato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compostiStatiBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUbicazione)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ubicazioniSelectCommandBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubSolvente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.solventiBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubSchedaDocumenti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubApparecchio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.apparecchiSelectCommandBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtensile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utensiliSelectCommandBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubApparecchio2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtensile2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSubUtente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginUtentiBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -860,11 +1532,11 @@ namespace EOS.UI
         private DevExpress.XtraEditors.LookUpEdit cboUtenteCreazione;
         private DevExpress.XtraEditors.GridLookUpEdit cboStato;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.GridControl gridRetteDettaglio;
-        private DevExpress.XtraGrid.Views.Grid.GridView gviewRetteDettaglio;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton butAggiungiComponente;
-        private DevExpress.XtraEditors.SimpleButton butCancella;
+        private DevExpress.XtraGrid.GridControl gridRetteDetails;
+        private DevExpress.XtraGrid.Views.Grid.GridView gviewRetteDetails;
+        private DevExpress.XtraEditors.SimpleButton butScollegaEAnnulla;
+        private DevExpress.XtraEditors.SimpleButton butAggiungi;
+        private DevExpress.XtraEditors.SimpleButton butScollega;
         private DevExpress.XtraEditors.SimpleButton butModifica;
         private DevExpress.XtraEditors.SimpleButton butClose;
         private Soluzioni soluzioni;
@@ -882,5 +1554,67 @@ namespace EOS.UI
         private SoluzioniTableAdapters.Login_UtentiTableAdapter login_UtentiTableAdapter;
         private System.Windows.Forms.BindingSource retteTipologiaBindingSource;
         private SoluzioniTableAdapters.Rette_TipologiaTableAdapter rette_TipologiaTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDRetta;
+        private DevExpress.XtraGrid.Columns.GridColumn colCodiceRetta;
+        private DevExpress.XtraGrid.Columns.GridColumn colTipologia;
+        private DevExpress.XtraGrid.Columns.GridColumn colNome;
+        private DevExpress.XtraGrid.Columns.GridColumn colStato;
+        private DevExpress.XtraGrid.Columns.GridColumn colSolvente;
+        private DevExpress.XtraGrid.Columns.GridColumn colMiscelaSolventi;
+        private DevExpress.XtraGrid.Columns.GridColumn colDefaultGiorniScadenza;
+        private DevExpress.XtraGrid.Columns.GridColumn colDataScadenza;
+        private DevExpress.XtraGrid.Columns.GridColumn colNote;
+        private DevExpress.XtraGrid.Columns.GridColumn colDataCreazione;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDSoluzione;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubCodiceSoluzione;
+        private DevExpress.XtraGrid.Columns.GridColumn colUtenteCreazione;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubNome;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDStato;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubUMVolumeFinale;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubVolumeFinale;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDSolvente;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDSchedaDocumenti;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDApparecchio;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDUtensile;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDApparecchio2;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDUtensile2;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubDefaultGiorniScadenza;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubDataScadenza;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubNotePrescrittive;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubNoteDescrittive;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubDataCreazione;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDUtente;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubTipologia;
+        private System.Windows.Forms.BindingSource soluzioniTipologiaBindingSource1;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubStato;
+        private System.Windows.Forms.BindingSource compostiStatiBindingSource1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubSolvente;
+        private System.Windows.Forms.BindingSource solventiBindingSource1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubSchedaDocumenti;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubApparecchio;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
+        private System.Windows.Forms.BindingSource apparecchiSelectCommandBindingSource;
+        private LupinTableAdapters.ApparecchiSelectCommandTableAdapter apparecchiSelectCommandTableAdapter;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubUtensile;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
+        private System.Windows.Forms.BindingSource utensiliSelectCommandBindingSource;
+        private LupinTableAdapters.UtensiliSelectCommandTableAdapter utensiliSelectCommandTableAdapter;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubApparecchio2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubUtensile2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubUtente;
+        private System.Windows.Forms.BindingSource loginUtentiBindingSource1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView11;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubIDUbicazione;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cboSubUbicazione;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView12;
+        private System.Windows.Forms.BindingSource ubicazioniSelectCommandBindingSource;
+        private LupinTableAdapters.UbicazioniSelectCommandTableAdapter ubicazioniSelectCommandTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colSubTipologia;
     }
 }
