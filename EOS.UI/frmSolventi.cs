@@ -548,8 +548,14 @@ namespace EOS.UI
                 {
                     cboTipologia.Enabled = false;
                     txtNome.Enabled = false;
-                    txtNotePrescrittive.Enabled = false;
-                    txtNoteDescrittive.Enabled = false;
+
+                    //txtNotePrescrittive.Enabled = false;
+                    //txtNoteDescrittive.Enabled = false;
+                    txtNotePrescrittive.Enabled = true;
+                    txtNoteDescrittive.Enabled = true;
+                    txtNotePrescrittive.ReadOnly = true;
+                    txtNoteDescrittive.ReadOnly = true;
+
                     cboStato.Enabled = true;
                     cboUbicazione.Enabled = false;
                     txtDataCreazione.Enabled = false;
@@ -578,8 +584,12 @@ namespace EOS.UI
                 {
                     cboTipologia.Enabled = true;
                     txtNome.Enabled = true;
+
                     txtNotePrescrittive.Enabled = true;
                     txtNoteDescrittive.Enabled = true;
+                    txtNotePrescrittive.ReadOnly = false;
+                    txtNoteDescrittive.ReadOnly = false;
+
                     cboStato.Enabled = true;
                     cboUbicazione.Enabled = true;
                     txtDataCreazione.Enabled = false;
@@ -645,8 +655,14 @@ namespace EOS.UI
                         }
                         txtGiorniScadenza.Enabled = true;
                         txtDataPreparazione.Enabled = false;
+
+                        //txtNotePrescrittive.Enabled = true;
+                        //txtNoteDescrittive.Enabled = false;
                         txtNotePrescrittive.Enabled = true;
-                        txtNoteDescrittive.Enabled = false;
+                        txtNoteDescrittive.Enabled = true;
+                        txtNotePrescrittive.ReadOnly = false;
+                        txtNoteDescrittive.ReadOnly = true;
+
                         //txtDataScadenza.Enabled = false;
                         //removecontrolhandler();
                         //txtDataPreparazione.EditValue = null;
@@ -663,8 +679,14 @@ namespace EOS.UI
                         txtDataPreparazione.Enabled = true;
                         //txtDataScadenza.Enabled = true;
                         txtGiorniScadenza.Enabled = true;
-                        txtNotePrescrittive.Enabled = false;
+
+                        //txtNotePrescrittive.Enabled = false;
+                        //txtNoteDescrittive.Enabled = true;
+                        txtNotePrescrittive.Enabled = true;
                         txtNoteDescrittive.Enabled = true;
+                        txtNotePrescrittive.ReadOnly = true;
+                        txtNoteDescrittive.ReadOnly = false;
+
                         //removecontrolhandler();
                         //txtGiorniScadenza.EditValue = null;
                         //addcontrolhandler();
@@ -980,8 +1002,14 @@ namespace EOS.UI
 
             cboTipologia.Enabled = true;
             txtNome.Enabled = true;
+
+            //txtNotePrescrittive.Enabled = true;
+            //txtNoteDescrittive.Enabled = true;
             txtNotePrescrittive.Enabled = true;
             txtNoteDescrittive.Enabled = true;
+            txtNotePrescrittive.ReadOnly = false;
+            txtNoteDescrittive.ReadOnly = false;
+
             txtGiorniScadenza.Enabled = true;
             txtDataPreparazione.Enabled = true;
             txtDataScadenza.Enabled = false;

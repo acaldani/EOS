@@ -80,6 +80,7 @@ namespace EOS.UI
             this.rETTEDITARATURAToolStripMenuItem.Name = "rETTEDITARATURAToolStripMenuItem";
             this.rETTEDITARATURAToolStripMenuItem.Size = new System.Drawing.Size(134, 19);
             this.rETTEDITARATURAToolStripMenuItem.Text = "RETTE DI TARATURA";
+            this.rETTEDITARATURAToolStripMenuItem.Visible = false;
             this.rETTEDITARATURAToolStripMenuItem.Click += new System.EventHandler(this.rETTEDITARATURAToolStripMenuItem_Click);
             // 
             // xtraTabbedMdiManager1
