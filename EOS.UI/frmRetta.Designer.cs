@@ -323,6 +323,7 @@ namespace EOS.UI
             this.tbStampaReport.Caption = "Stampa Report";
             this.tbStampaReport.Id = 5;
             this.tbStampaReport.Name = "tbStampaReport";
+            this.tbStampaReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.tbStampaReport_ItemClick);
             // 
             // tbEsportaExcel
             // 
@@ -536,11 +537,11 @@ namespace EOS.UI
             this.cboTipologia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboTipologia.Properties.DataSource = this.retteTipologiaBindingSource;
-            this.cboTipologia.Properties.DisplayMember = "DescrizioneTipologia";
+            this.cboTipologia.Properties.DisplayMember = "NomeTipologia";
             this.cboTipologia.Properties.NullText = "";
             this.cboTipologia.Properties.PopupSizeable = false;
             this.cboTipologia.Properties.PopupView = this.gridLookUpEdit1View;
-            this.cboTipologia.Properties.ValueMember = "ID";
+            this.cboTipologia.Properties.ValueMember = "NomeTipologia";
             this.cboTipologia.Size = new System.Drawing.Size(497, 20);
             this.cboTipologia.StyleController = this.layoutControl1;
             this.cboTipologia.TabIndex = 5;
@@ -1315,6 +1316,7 @@ namespace EOS.UI
             this.butAggiungi.Size = new System.Drawing.Size(195, 22);
             this.butAggiungi.TabIndex = 33;
             this.butAggiungi.Text = "Aggiungi Gruppo Punti/Soluzioni";
+            this.butAggiungi.Click += new System.EventHandler(this.butAggiungi_Click);
             // 
             // butScollega
             // 
@@ -1323,6 +1325,7 @@ namespace EOS.UI
             this.butScollega.Size = new System.Drawing.Size(195, 22);
             this.butScollega.TabIndex = 35;
             this.butScollega.Text = "Scollega Punto/Soluzione";
+            this.butScollega.Click += new System.EventHandler(this.butScollega_Click);
             // 
             // butModifica
             // 
@@ -1331,6 +1334,7 @@ namespace EOS.UI
             this.butModifica.Size = new System.Drawing.Size(195, 22);
             this.butModifica.TabIndex = 34;
             this.butModifica.Text = "Modifica Punto/Soluzione";
+            this.butModifica.Click += new System.EventHandler(this.butModifica_Click);
             // 
             // butScollegaEAnnulla
             // 
@@ -1339,6 +1343,7 @@ namespace EOS.UI
             this.butScollegaEAnnulla.Size = new System.Drawing.Size(195, 22);
             this.butScollegaEAnnulla.TabIndex = 36;
             this.butScollegaEAnnulla.Text = "Scollega e Annulla Punto/Soluzione";
+            this.butScollegaEAnnulla.Click += new System.EventHandler(this.butScollegaEAnnulla_Click);
             // 
             // butClose
             // 

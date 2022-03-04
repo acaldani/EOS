@@ -110,6 +110,39 @@ namespace EOS.Core.Control
         }
 
         //IDRetta
+        public string GetTipologiaRettaByID(int ID)
+        {
+            string ret = "";
+            string SQLString = "";
+
+            SQLString = "Select Tipologia from Rette WHERE IDRetta='" + ID + "' ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.Connection = cnn;
+                    cmd.CommandText = SQLString;
+
+                    var dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            ret = dr["Tipologia"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        //IDRetta
         public string GetCodiceRettaByID(int ID)
         {
             string ret = "";
@@ -371,6 +404,72 @@ namespace EOS.Core.Control
                         while (dr.Read())
                         {
                             ret = dr["Nome"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        //IDSchedaDocumenti
+        public string GetCASByIDSchedaDocumenti(int IDSchedaDocumenti)
+        {
+            string ret = "";
+            string SQLString = "";
+
+            SQLString = "SELECT CAS FROM [SERVER026].[LUPIN].[dbo].SchedeDocumenti SD INNER JOIN [SERVER026].[LUPIN].[dbo].Materiali MAT ON SD.IDMateriale=MAT.IDMateriale WHERE SD.IDSchedaDocumenti=" + IDSchedaDocumenti + " ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.Connection = cnn;
+                    cmd.CommandText = SQLString;
+
+                    var dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            ret = dr["CAS"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        //IDSchedaDocumenti
+        public string GetUMByIDTipoMateriale(int IDTipoMateriale)
+        {
+            string ret = "";
+            string SQLString = "";
+
+            SQLString = "SELECT UM FROM Materiale_Tipologia WHERE ID=" + IDTipoMateriale + " ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.Connection = cnn;
+                    cmd.CommandText = SQLString;
+
+                    var dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            ret = dr["UM"].ToString();
                         }
                     }
                 }

@@ -922,7 +922,6 @@ namespace EOS.UI
             {
                 EOS.Core.Control.Control_Solventi_Details ControlSolventiDetail = new EOS.Core.Control.Control_Solventi_Details();
                 ControlSolventiDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                EOS.Core.Model.Model_Solventi_Details ModelSolventiDetail = new EOS.Core.Model.Model_Solventi_Details();
 
                 ControlSolventiDetail.IDUtente = IDUtente;
 
@@ -968,7 +967,6 @@ namespace EOS.UI
                     XtraMessageBox.Show("La cancellazione dei dati è terminata con errore.", "Cancella", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                ModelSolventiDetail = null;
                 ControlSolventiDetail = null;
 
                 IDSolventeCalled = IDSolvente;

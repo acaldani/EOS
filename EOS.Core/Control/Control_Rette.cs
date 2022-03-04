@@ -79,7 +79,7 @@ namespace EOS.Core.Control
                         r.DataCreazione = Convert.ToDateTime("01/01/0001");
                         r.IDUtente = 0;
 
-                        ret.Add(r.IDSolvente, r);
+                        ret.Add(r.IDRetta, r);
                         r = null;
                     }
                 }
@@ -93,38 +93,7 @@ namespace EOS.Core.Control
             return GetData(SQLString);
         }
 
-        public string GetCodiceRettaFromIDRetta(int IDRetta)
-        {
-            string ret = "";
-
-            string SQLString = "Select CodiceRetta from Rette WHERE IDRetta='" + IDRetta + "' ";
-
-            using (var cnn = new SqlConnection())
-            {
-                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                cnn.Open();
-
-                using (var cmd = new SqlCommand())
-                {
-                    cmd.Connection = cnn;
-                    cmd.CommandText = SQLString;
-
-                    var dr = cmd.ExecuteReader();
-
-                    if (dr.HasRows)
-                    {
-                        while (dr.Read())
-                        {
-                            ret = dr["CodiceRetta"].ToString();
-                        }
-                    }
-                }
-            }
-
-            return ret;
-        }
-
-        public int AddSolution(Model_Rette Retta)
+        public int AddRette(Model_Rette Retta)
         {
             int newid = 0;
             object newcode = "";
@@ -268,7 +237,7 @@ namespace EOS.Core.Control
                 cmd.ExecuteNonQuery();
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //Ho deciso di far seguire una modifica dello stato della retta ad un conseguente adeguamento dello stato delle soluzioni relative ai punti della retta che si trovano nello
+                //Ho deciso di far seguire alla modifica dello stato della retta un conseguente adeguamento dello stato delle soluzioni relative ai punti della retta che si trovano nello
                 //stato della retta prima dell'update. Quindi tutte le soluzioni il cui stato non è cambiato per un operazione specifica su quella soluzione seguiranno sempre lo stato della
                 //retta. Tutte le altre manterranno il loro stato imputato manualmente proprio perchè l'operatore lo avrà modificat solo su quella soluzione per un motivo valido (esempio
                 //una soluzione annullata)
@@ -278,7 +247,7 @@ namespace EOS.Core.Control
                     EOS.Core.Control.Control_RetteSoluzioni ControlRetteSoluzioni = new EOS.Core.Control.Control_RetteSoluzioni();
                     ControlRetteSoluzioni.ConnectionString = ConnectionString;
 
-                    ControlRetteSoluzioni.AnnullaScollegaSoluzioni(Retta.IDRetta, Retta.IDStato, true, false, false);
+                    ControlRetteSoluzioni.CambiaStatoScollegaSoluzioni(Retta.IDRetta, Retta.IDStato, true, false, false);
 
                     ControlRetteSoluzioni = null;
                 }
@@ -294,7 +263,7 @@ namespace EOS.Core.Control
                 //    cmd.ExecuteNonQuery();
                 //}
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //Ho deciso di far seguire una modifica dello stato della retta ad un conseguente adeguamento dello stato delle soluzioni relative ai punti della retta che si trovano nello
+                //Ho deciso di far seguire alla modifica dello stato della retta un conseguente adeguamento dello stato delle soluzioni relative ai punti della retta che si trovano nello
                 //stato della retta prima dell'update. Quindi tutte le soluzioni il cui stato non è cambiato per un operazione specifica su quella soluzione seguiranno sempre lo stato della
                 //retta. Tutte le altre manterranno il loro stato imputato manualmente proprio perchè l'operatore lo avrà modificat solo su quella soluzione per un motivo valido (esempio
                 //una soluzione annullata)
@@ -314,20 +283,18 @@ namespace EOS.Core.Control
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 ControlCalcolo.IDUtente = IDUtente;
 
-                //adattare count component
                 if (ControlCalcolo.CountComponent(Retta.IDRetta, "Retta") > 0)
                 {
-                    Control_Rette ControlRetta = new Control_Rette();
-                    ControlRetta.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                    //Control_Rette ControlRetta = new Control_Rette();
+                    //ControlRetta.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
 
-                    Model_Rette ModelRetta = new Model_Rette();
-                    ModelRetta = ControlRetta.GetRettaByID(Retta.IDRetta).First().Value;
+                    //Model_Rette ModelRetta = new Model_Rette();
+                    //ModelRetta = ControlRetta.GetRettaByID(Retta.IDRetta).First().Value;
 
-                    //adattare setdatascadenza con il discorso gestione della retta
-                    ControlCalcolo.SetDataScadenza(ModelRetta.IDRetta, ModelRetta.DefaultGiorniScadenza, DateTime.Today, "Retta");
+                    ControlCalcolo.SetDataScadenza(Retta.IDRetta, Retta.DefaultGiorniScadenza, DateTime.Today, "Retta");
 
-                    ModelRetta = null;
-                    ControlRetta = null;
+                    //ModelRetta = null;
+                    //ControlRetta = null;
                 }
 
                 ControlCalcolo = null;
@@ -479,6 +446,126 @@ namespace EOS.Core.Control
             {
                 return 0;
             }
+        }
+
+        public int GetNextIDGruppoPuntiComponentiFromIDRetta(int IDRetta)
+        {
+            int ret = 0;
+
+            string SQLString = "SELECT Count(*) as Conta FROM [dbo].[Rette_GruppoPunti_Componenti] WHERE IDRetta=" + IDRetta + " ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cnn;
+                cmd.CommandText = SQLString;
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    dr.Read();
+
+                    ret = Convert.ToInt32(dr["Conta"]);
+
+                    dr.Close();
+                    dr = null;
+                    cmd = null;
+
+                    if (ret != 0)
+                    {
+                        SQLString = "SELECT Count(*) as Conta FROM [dbo].[Rette_GruppoPunti_Componenti] WHERE IDRetta=" + IDRetta + " AND DataInserimento IS NULL ";
+
+                        var cmd2 = new SqlCommand();
+
+                        cmd2.Connection = cnn;
+                        cmd2.CommandText = SQLString;
+
+                        var dr2 = cmd2.ExecuteReader();
+
+                        if (dr2.HasRows)
+                        {
+                            dr2.Read();
+
+                            ret = Convert.ToInt32(dr2["Conta"]);
+
+                            dr2.Close();
+                            dr2 = null;
+                            cmd2 = null;
+
+                            if (ret != 0)
+                            {
+                                SQLString = "SELECT MAX(IDGruppoPunti) as NextIDGruppoPuntiComponenti FROM [dbo].[Rette_GruppoPunti_Componenti] WHERE IDRetta=" + IDRetta + " AND DataInserimento IS NULL ";
+                            }
+                            else
+                            {
+                                SQLString = "SELECT MAX(IDGruppoPunti)+1 as NextIDGruppoPuntiComponenti FROM [dbo].[Rette_GruppoPunti_Componenti] WHERE IDRetta=" + IDRetta + " ";
+                            }
+
+                            var cmd3 = new SqlCommand();
+
+                            cmd3.Connection = cnn;
+                            cmd3.CommandText = SQLString;
+
+                            var dr3 = cmd3.ExecuteReader();
+
+                            if (dr3.HasRows)
+                            {
+                                dr3.Read();
+
+                                ret = Convert.ToInt32(dr3["NextIDGruppoPuntiComponenti"]);
+
+                                dr3.Close();
+                                dr3 = null;
+                                cmd3 = null;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ret = 1;
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public int GetNextPointNumberInRettaFromIDRetta(int IDRetta)
+        {
+            int ret = 0;
+
+            string SQLString = "SELECT Count(*) + 1 as Conta FROM [dbo].[Rette_Soluzioni] WHERE IDRetta=" + IDRetta + " ";
+
+            using (var cnn = new SqlConnection())
+            {
+                cnn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                cnn.Open();
+
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cnn;
+                cmd.CommandText = SQLString;
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    dr.Read();
+
+                    ret = Convert.ToInt32(dr["Conta"]);
+
+                    dr.Close();
+                    dr = null;
+                    cmd = null;
+                }
+            }
+
+            return ret;
         }
     }
 }

@@ -1346,7 +1346,6 @@ namespace EOS.UI
             {
                 EOS.Core.Control.Control_Soluzioni_Details ControlSolutionDetail = new EOS.Core.Control.Control_Soluzioni_Details();
                 ControlSolutionDetail.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
-                EOS.Core.Model.Model_Soluzioni_Details ModelSolutionDetail = new EOS.Core.Model.Model_Soluzioni_Details();
 
                 ControlSolutionDetail.IDUtente = IDUtente;
 
@@ -1404,7 +1403,6 @@ namespace EOS.UI
                     XtraMessageBox.Show("La cancellazione dei dati è terminata con errore.", "Cancella", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                ModelSolutionDetail = null;
                 ControlSolutionDetail = null;
                 
                 IDSoluzioneCalled = IDSoluzione;

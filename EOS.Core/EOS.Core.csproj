@@ -57,6 +57,7 @@
     <Compile Include="Control\Control_Log.cs" />
     <Compile Include="Control\Control_Materiale_Tipologia.cs" />
     <Compile Include="Control\Control_MaterialiMR.cs" />
+    <Compile Include="Control\Control_Retta_GruppiPunti_Componenti.cs" />
     <Compile Include="Control\Control_Rette.cs" />
     <Compile Include="Control\Control_RetteSoluzioni.cs" />
     <Compile Include="Control\Control_Solventi.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Control\Control_Transcode.cs" />
     <Compile Include="Control\Control_Utenti.cs" />
     <Compile Include="Control\Control_WorkingSolution_Details.cs" />
+    <Compile Include="Model\Model_Retta_GruppiPunti_Componenti.cs" />
     <Compile Include="Model\Model_Rette.cs" />
     <Compile Include="Model\Model_Configurazione.cs" />
     <Compile Include="Model\Model_Documenti.cs" />

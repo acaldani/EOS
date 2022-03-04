@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -713,7 +714,7 @@ namespace EOS.UI
 
                     ControlRette.IDUtente = IDUtente;
 
-                    ret = ControlRette.AddSolution(ModelRette);
+                    ret = ControlRette.AddRette(ModelRette);
 
                     IDRettaCalled = ret;
 
@@ -740,8 +741,6 @@ namespace EOS.UI
                             XtraMessageBox.Show("Il salvataggio è stato annullato.", "Salva", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-
-                    ControlRetteSoluzioni = null;
 
                     if (ProcediACambioStatoDaModello>0)
                     {
@@ -775,7 +774,7 @@ namespace EOS.UI
                             //annullamento delle soluzioni modello per cambio tipologia da retta modello a retta di altro tipo
                             if (ProcediACambioStatoDaModello == 2)
                             {
-                                ControlRetteSoluzioni.AnnullaScollegaSoluzioni(ModelRette.IDRetta, ModelRette.IDStato, true, false, true);
+                                ControlRetteSoluzioni.CambiaStatoScollegaSoluzioni(ModelRette.IDRetta, ModelRette.IDStato, true, false, true);
                             }
 
                             IDRettaCalled = IDRetta;
@@ -783,6 +782,9 @@ namespace EOS.UI
                             CambioStatoOK = true;
                         }
                     }
+
+                    ControlRetteSoluzioni = null;
+
                 }
 
                 ControlRette = null;
@@ -1321,5 +1323,45 @@ namespace EOS.UI
 
             LogView.Show();
         }
+
+        private void tbStampaReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void butScollega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butScollegaEAnnulla_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butModifica_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butAggiungi_Click(object sender, EventArgs e)
+        {
+            
+
+            FrmRettaPuntiSelezioneComponenti Seleziona = new FrmRettaPuntiSelezioneComponenti();
+            Seleziona.IDCaller = IDRetta;
+            Seleziona.IDRetta = IDRetta;
+            Seleziona.IDUtente = IDUtente;
+
+            Core.Control.Control_Rette ControlRette = new Core.Control.Control_Rette();
+            ControlRette.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+            Seleziona.IDGruppoPunti = ControlRette.GetNextIDGruppoPuntiComponentiFromIDRetta(IDRetta);
+            ControlRette = null;
+
+            Seleziona.ConnectioString= System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+            Seleziona.ShowDialog();
+        }
+
+        
     }
 }
