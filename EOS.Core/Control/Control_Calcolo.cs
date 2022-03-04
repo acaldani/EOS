@@ -555,17 +555,17 @@ namespace EOS.Core.Control
 
                     if (SoluzioneSolvente == "Retta")
                     {
-                        SQLString = SQLString + "select min(isnull(SOL.DataScadenza,'31/12/2999')) as DataScadenza from Rette_Soluzioni RETSOL inner join Soluzioni SOL ON RETSOL.IDSoluzione=SOL.IDSoluzione WHERE RETSOL.IDRetta={0} and isnull (DataScadenza,'31/12/2999')>getdate() ";
+                        SQLString = SQLString + "select isnull(min(isnull(SOL.DataScadenza,'31/12/2999')),'31/12/2999') as DataScadenza from Rette_Soluzioni RETSOL inner join Soluzioni SOL ON RETSOL.IDSoluzione=SOL.IDSoluzione WHERE RETSOL.IDRetta={0} and isnull (DataScadenza,'31/12/2999')>getdate() ";
                     }
                     else
                     {
                         if (SoluzioneSolvente == "Soluzione")
                         {
-                            SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Soluzioni_Details where IDSoluzioneMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                            SQLString = SQLString + "Select isnull(min(isnull(DataScadenza,'31/12/2999')),'31/12/2999') as DataScadenza from Soluzioni_Details where IDSoluzioneMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
                         }
                         else
                         {
-                            SQLString = SQLString + "Select min(isnull(DataScadenza,'31/12/2999')) as DataScadenza from Solventi_Details where IDSolventeMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
+                            SQLString = SQLString + "Select isnull(min(isnull(DataScadenza,'31/12/2999')),'31/12/2999') as DataScadenza from Solventi_Details where IDSolventeMaster={0} and isnull(DataScadenza,'31/12/2999')>getdate() ";
                         }
                     }
 
