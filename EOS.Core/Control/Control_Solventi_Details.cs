@@ -179,17 +179,20 @@ namespace EOS.Core.Control
                 EOS.Core.Control.Control_Solventi ControlSolventi = new Core.Control.Control_Solventi();
                 ControlSolventi.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 EOS.Core.Model.Model_Solventi ModelSolventi = new Core.Model.Model_Solventi();
+                EOS.Core.Model.Model_Solventi ModelSolventiOriginale = new EOS.Core.Model.Model_Solventi();
                 ModelSolventi = ControlSolventi.GetSolventeByID(SolventeDetail.IDSolventeMaster).First().Value;
+                ModelSolventiOriginale = ControlSolventi.GetSolventeByID(SolventeDetail.IDSolventeMaster).First().Value;
                 EOS.Core.Control.Control_Calcolo ControlCalcolo = new EOS.Core.Control.Control_Calcolo();
                 ControlCalcolo.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 ControlCalcolo.IDUtente = IDUtente;
                 ControlCalcolo.SetDataScadenza(SolventeDetail.IDSolventeMaster, ModelSolventi.DefaultGiorniScadenza, ModelSolventi.DataPreparazione, "Solvente");
 
-                ControlSolventi.AddLogSolVente("Aggiornamento", ModelSolventi, ModelSolventi.DataPreparazione.ToString(), ModelSolventi.DataScadenza.ToString(), ModelSolventi.DataCreazione.ToString());
+                ControlSolventi.AddLogSolVente("Aggiornamento", ModelSolventi, ModelSolventi.DataPreparazione.ToString(), ModelSolventi.DataScadenza.ToString(), ModelSolventi.DataCreazione.ToString(), 0, ModelSolventiOriginale);
 
                 ModelSolventi = null;
                 ControlSolventi = null;
                 ControlCalcolo = null;
+                ModelSolventiOriginale = null;
 
                 return 1;
             }

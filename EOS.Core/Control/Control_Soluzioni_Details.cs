@@ -188,17 +188,20 @@ namespace EOS.Core.Control
                 ControlCalcolo.IDUtente = IDUtente;
                 EOS.Core.Control.Controller_Soluzioni ControlSoluzioni = new EOS.Core.Control.Controller_Soluzioni();
                 ControlSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
+                EOS.Core.Model.Model_Soluzioni ModelSoluzioniOriginale = new EOS.Core.Model.Model_Soluzioni();
                 EOS.Core.Model.Model_Soluzioni ModelSoluzioni = new EOS.Core.Model.Model_Soluzioni();
                 ControlSoluzioni.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringEOS"].ConnectionString;
                 ControlCalcolo.CalcolaConcentrazione(SoluzioneDetail.IDSoluzioneMaster);
                 ModelSoluzioni = ControlSoluzioni.GetSolutionByID(SoluzioneDetail.IDSoluzioneMaster).First().Value;
+                ModelSoluzioniOriginale = ControlSoluzioni.GetSolutionByID(SoluzioneDetail.IDSoluzioneMaster).First().Value;
                 ControlCalcolo.SetDataScadenza(ModelSoluzioni.IDSoluzione, ModelSoluzioni.DefaultGiorniScadenza, ModelSoluzioni.DataPreparazione, "Soluzione");
 
-                ControlSoluzioni.AddLogSoluzione("Aggiornamento", ModelSoluzioni, ModelSoluzioni.DataPreparazione.ToString(), ModelSoluzioni.DataScadenza.ToString(), ModelSoluzioni.DataCreazione.ToString());
+                ControlSoluzioni.AddLogSoluzione("Aggiornamento", ModelSoluzioni, ModelSoluzioni.DataPreparazione.ToString(), ModelSoluzioni.DataScadenza.ToString(), ModelSoluzioni.DataCreazione.ToString(), 0, ModelSoluzioniOriginale);
 
                 ControlCalcolo = null;
                 ControlSoluzioni = null;
                 ModelSoluzioni = null;
+                ModelSoluzioniOriginale = null;
 
                 return 1;
             }

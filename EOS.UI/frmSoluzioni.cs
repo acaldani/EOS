@@ -126,16 +126,21 @@ namespace EOS.UI
 
         private void gviewSoluzioni_FocusedRowChanged(object sender, EventArgs e)
         {
-            if(restorefocus==0)
-            {
-                if (DataAdd == false)
-                {
-                    IDSoluzione = Convert.ToInt32(gviewSoluzioni.GetFocusedRowCellValue("IDSoluzione"));
+            int i = gviewSoluzioni.FocusedRowHandle;
 
-                    if (IDSoluzione != 0)
+            if (i > 0)
+            {
+                if (restorefocus == 0)
+                {
+                    if (DataAdd == false)
                     {
-                        LoadControl();
-                        LoadSoluzioniCbo();
+                        IDSoluzione = Convert.ToInt32(gviewSoluzioni.GetFocusedRowCellValue("IDSoluzione"));
+
+                        if (IDSoluzione != 0)
+                        {
+                            LoadControl();
+                            LoadSoluzioniCbo();
+                        }
                     }
                 }
             }
