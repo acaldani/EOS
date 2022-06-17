@@ -50,7 +50,7 @@ namespace EOS.UI
 
         private void frmDuplica_Load(object sender, EventArgs e)
         {
-            // TODO: questa riga di codice carica i dati nella tabella 'lupin.UtensiliSelectCommand'. È possibile spostarla o rimuoverla se necessario.
+            // TODO: questa riga di codice carica i dati nella tabella 'lupin.UtensiliSelectCommand'. È possibile spostarla o rimuoverla se necessario. 
             this.utensiliSelectCommandTableAdapter.Fill(this.lupin.UtensiliSelectCommand);
             // TODO: questa riga di codice carica i dati nella tabella 'lupin.ApparecchiSelectCommand'. È possibile spostarla o rimuoverla se necessario.
             this.apparecchiSelectCommandTableAdapter.Fill(this.lupin.ApparecchiSelectCommand);
